@@ -1,0 +1,8 @@
+Grading r795 by nwang16 committed on Tue Jan 17 23:05:30 CST 2017
+Monad Autograder
+Testing lab_intro at 2017-01-23 00:22:54
+
+"Fish are meat, they're like water poultry." ~ Chase Geigle
+
+Setting up test environment...
+Error: /dev/shm/cs225student/autograder/temp/lab_intro/rgbapixel.cpp does not exist.
