@@ -1,0 +1,24 @@
+Grading r7223 by roatis2 committed on Sun Jan 29 21:50:44 CST 2017
+Monad Autograder
+Testing lab_debug at 2017-01-30 00:27:07
+
+"If you just rely on one model, you tend to amputate reality to make it fit your model." ~ David Brooks
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+no_segfaults . . . [20 pts] - passed
+produces_out_png . [10 pts] - passed
+similar_sketch . . [30 pts] - passed
+complete_in_01_png [20 pts] - passed
+complete_in_02_png [20 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
