@@ -1,0 +1,26 @@
+Grading r9499 by roatis2 committed on Fri Feb  3 21:51:24 CST 2017
+Monad Autograder
+Testing mp2.1 at 2017-02-04 00:50:54
+
+"It'll work, the stack's just not big enough." ~ Eric Rosenberg
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+InvertColorsEven  . . [30 pts] - passed
+FlipLeftEven  . . . . [15 pts] - passed
+FlipLeftOdd . . . . . [15 pts] - passed
+AdjustBrightnessEven  [10 pts] - FAILED
+AdjustBrightnessEven2 [10 pts] - FAILED
+AdjustBrightnessEven3 [10 pts] - FAILED
+ImageMakefile . . . . [10 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 70
+
