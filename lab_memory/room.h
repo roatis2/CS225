@@ -26,9 +26,6 @@ class Room
     /** The number of students currently allocated */
     int count;
 
-    /** The maximum size of the letters array (26) */
-    int max_letters;
-
     /** An array of Letters currently allocated */
     Letter* letters;
 

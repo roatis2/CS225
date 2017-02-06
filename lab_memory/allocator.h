@@ -23,8 +23,10 @@ class Allocator
      * @param studentFile Path to roster file
      * @param roomFile Path to room list file
      */
-    Allocator(const string& studentFile, const string& roomFile);
+    ~Allocator();
 
+    Allocator(const string& studentFile, const string& roomFile);
+   
 
     /**
      * Calls the solving routine to allocate student letter

@@ -6,7 +6,7 @@
 #include "room.h"
 
 Room::Room()
-    : capacity(0), count(0), max_letters(26), letters(NULL), letterCount(0)
+    : capacity(0), count(0), letters(NULL), letterCount(0)
 {
 }
 
@@ -14,10 +14,9 @@ Room::Room(const string& init_name, int init_capacity)
     : name(init_name),
       capacity(init_capacity),
       count(0),
-      max_letters(26),
       letterCount(0)
 {
-    letters = new Letter[max_letters];
+    letters = new Letter[26];
 }
 
 Room::Room(const Room& other)
@@ -61,7 +60,8 @@ void Room::print()
 void Room::clear()
 {
     if (letters != NULL)
-        delete letters;
+        delete [] letters;
+	letters = nullptr;
 }
 
 void Room::copy(const Room& other)
@@ -70,5 +70,11 @@ void Room::copy(const Room& other)
     capacity = other.capacity;
     count = other.count;
     letterCount = other.letterCount;
-    letters = other.letters;
+    letters = new Letter[26];
+    for (int x=0; x<letterCount; x++)
+	{
+	letters[x] = other.letters[x];
+	}
+
+
 }
