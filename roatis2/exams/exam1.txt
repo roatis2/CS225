@@ -1,0 +1,189 @@
+Exam #1 score (roatis2): 0/6
+
+=== Grade Feedback for Problem "exam1_createSmallClass_cube" ===
+[0/1]: Test: default constructor
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: one parameter constructor
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: use of type double
+     Message: Unable to run test due to `make` failing.
+=====
+[0/3]
+
+--- stdout ---
+g++ -g -O0 -Wall -Wextra main.cpp cube.cpp -o cube-tester
+
+
+--- stderr ---
+cube.cpp: In constructor ‘cube::cube(double)’:
+cube.cpp:8:16: error: declaration of ‘double d’ shadows a parameter
+         double d = 1.0;
+                ^
+cube.cpp:8:16: warning: unused variable ‘d’ [-Wunused-variable]
+cube.cpp: At global scope:
+cube.cpp:6:1: warning: unused parameter ‘d’ [-Wunused-parameter]
+ cube::cube(double d)
+ ^
+make: *** [cube-tester] Error 1
+
+
+--- submitted file: cube.cpp ---
+#include "cube.h"
+#include <iostream>
+
+using namespace std;
+
+cube::cube(double d)
+{
+        double d = 1.0;
+}
+
+double cube::getVolume()
+{
+	double volume = d*d*d;
+	return volume;	
+};
+//
+// The cube class must:
+//
+// - Store a variable d (stored as a double), which represents the length of
+//   one edge of the cube.
+//
+// - Have a default constructor that sets the length of the edge of the cube
+//   to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the cube
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the cube (as a double):
+//   - The volume of the cube can be calculated by: d * d * d
+//
+
+--- submitted file: cube.h ---
+#ifndef _CUBE_H
+#define _CUBE_H
+
+using namespace std;
+
+class cube
+{
+	public:
+
+	double d;
+
+	cube();
+	
+	cube(double d);
+
+	double getVolume();
+
+};
+	
+
+	
+//
+// The cube class must:
+//
+// - Store a variable d (stored as a double), which represents the length of
+//   one edge of the cube.
+//
+// - Have a default constructor that sets the length of the edge of the cube
+//   to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the cube
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the cube (as a double):
+//   - The volume of the cube can be calculated by: d * d * d
+//
+
+#endif
+
+
+=== Grade Feedback for Problem "exam1_mp1-like_xray" ===
+[0/1]: Test: in_1.png
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: in_2.png
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: in_3.png
+     Message: Unable to run test due to `make` failing.
+=====
+[0/3]
+
+--- stdout ---
+g++ -std=c++1y -c -g -O0 -Wall -Wextra -pedantic main.cpp
+
+
+--- stderr ---
+main.cpp: In function ‘PNG transform_xray(PNG)’:
+main.cpp:13:7: error: ‘j’ was not declared in this scope
+  for (j>0; j<original.height; j++;)
+       ^
+main.cpp:13:34: error: expected ‘)’ before ‘;’ token
+  for (j>0; j<original.height; j++;)
+                                  ^
+main.cpp:13:35: error: expected primary-expression before ‘)’ token
+  for (j>0; j<original.height; j++;)
+                                   ^
+main.cpp:13:35: error: expected ‘;’ before ‘)’ token
+main.cpp:12:8: warning: unused variable ‘r’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+        ^
+main.cpp:12:11: warning: unused variable ‘g’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+           ^
+main.cpp:12:14: warning: unused variable ‘b’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+              ^
+main.cpp:40:1: error: expected ‘}’ at end of input
+ }
+ ^
+main.cpp:40:1: warning: no return statement in function returning non-void [-Wreturn-type]
+make: *** [main.o] Error 1
+
+
+--- submitted file: main.cpp ---
+#include <algorithm>
+#include <iostream>
+
+#include "rgbapixel.h"
+#include "png.h"
+
+using namespace std;
+
+PNG transform_xray(PNG original) {
+	//
+	
+   int r, g, b; //to temporarily hold values in an array
+	for (j>0; j<original.height; j++;)
+	   {	   
+		for(i>0; i<original.width; i++)
+		{
+		   
+
+
+// To "X-Ray" an image, you must:
+	// - Invert every color component (red, green, and blue) of every pixel.
+	// - To invert the color component: subtract the value of the color
+	//   component from 255.  For example:
+	//   * An original value of 100 has an inverted value of 155
+	//     (since 255 - 100 = 155).
+	//   * An original value of 210 has an inverted value of 45
+	//     (since 255 - 210 = 45).
+	//   * An original value of 55 has an inverted value of 200
+	//     (since 255 - 55 = 200).
+	//   * etc..
+	//
+
+}
+
+int main() {
+	PNG image("in.png");
+	image = transform_xray(image);
+	image.writeToFile("out.png");
+	return 0;
+}
+
+
