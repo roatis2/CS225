@@ -21,12 +21,21 @@ Allocator::Allocator(const string& studentFile, const string& roomFile)
     loadRooms(roomFile);
 }
 
+Allocator::~Allocator()
+{
+    delete [] alpha;//deletes array
+    delete [] rooms;//deletes array
+    alpha = nullptr;//points to null
+    rooms = nullptr;//points to null
+}
+
 void Allocator::createLetterGroups()
 {
     // Make letters (A - Z lettergroups)
     alpha = new Letter[26];
     for (int i = 0; i < 26; i++)
         alpha[i].letter = 'A' + i;
+
 }
 
 void Allocator::loadStudents(const string& file)
@@ -39,7 +48,7 @@ void Allocator::loadStudents(const string& file)
         string name = fileio::nextStudent();
         char letter = name[0];
         int index = (int)letter - 'A';
-        alpha[index].addStudent();
+        alpha[index].addStudent(name);
     }
 }
 
@@ -47,14 +56,16 @@ void Allocator::loadRooms(const string& file)
 {
     // Read in rooms
     fileio::loadRooms(file);
+    roomCount = fileio::getNumRooms();
+    
     rooms = new Room[roomCount];
 
     totalCapacity = 0;
     int i = 0;
     while (fileio::areMoreRooms()) {
-        i++;
         rooms[i] = fileio::nextRoom();
         totalCapacity += rooms[i].capacity;
+        i++;
     }
 }
 
@@ -82,8 +93,7 @@ void Allocator::allocate()
 void Allocator::printRooms()
 {
     // Output the allocation
-    cout << "Room Allocation (" << studentCount << "/" << totalCapacity << ")"
-         << endl;
+    cout << "Room Allocation (" << studentCount << "/" << totalCapacity << ")" << endl;
     for (int i = 0; i < roomCount; i++)
         rooms[i].print();
 }
