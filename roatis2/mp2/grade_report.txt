@@ -1,8 +1,8 @@
-Grading r10409 by enx-cs225autograder committed on Sun Feb  5 20:52:51 CST 2017
+Grading r10709 by enx-cs225autograder committed on Mon Feb  6 01:19:09 CST 2017
 Monad Autograder
-Testing mp2 at 2017-02-06 01:14:47
+Testing mp2 at 2017-02-07 00:20:23
 
-"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
+"The most likely way for the world to be destroyed, most experts agree, is by accident. That's where we come in; we're computer professionals. We cause accidents." ~ Nathaniel Borenstein
 
 Setting up test environment...
 Error: /dev/shm/cs225student/autograder/temp/mp2/scene.h does not exist.
