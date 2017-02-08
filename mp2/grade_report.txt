@@ -1,8 +1,8 @@
-Grading r10709 by enx-cs225autograder committed on Mon Feb  6 01:19:09 CST 2017
+Grading r10930 by enx-cs225autograder committed on Tue Feb  7 00:25:20 CST 2017
 Monad Autograder
-Testing mp2 at 2017-02-07 00:20:23
+Testing mp2 at 2017-02-08 00:23:00
 
-"The most likely way for the world to be destroyed, most experts agree, is by accident. That's where we come in; we're computer professionals. We cause accidents." ~ Nathaniel Borenstein
+"I think there is a world market for maybe five computers." ~ Thomas Watson, IBM, 1943
 
 Setting up test environment...
 Error: /dev/shm/cs225student/autograder/temp/mp2/scene.h does not exist.
