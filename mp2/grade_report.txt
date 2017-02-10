@@ -1,8 +1,8 @@
-Grading r11183 by enx-cs225autograder committed on Wed Feb  8 00:28:04 CST 2017
+Grading r11688 by enx-cs225autograder committed on Thu Feb  9 00:45:02 CST 2017
 Monad Autograder
-Testing mp2 at 2017-02-09 00:32:33
+Testing mp2 at 2017-02-10 00:28:19
 
-"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
+"The cheapest, fastest, and most reliable components of a computer system are those that aren't there." ~ Gordon Bell
 
 Setting up test environment...
 Error: /dev/shm/cs225student/autograder/temp/mp2/scene.h does not exist.
