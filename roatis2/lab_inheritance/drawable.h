@@ -16,7 +16,7 @@
 class Drawable
 {
   public:
-    ~Drawable()
+    virtual ~Drawable() //destructor needs to be passed down as well
     { /* Nothing */
     }
 
