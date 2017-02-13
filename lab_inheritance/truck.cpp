@@ -35,13 +35,9 @@ const int NUM_WHEELS = 5;
 Truck::Truck(const Vector2& pcenter)
     : center_(pcenter),
       wheels(new Circle*[NUM_WHEELS]),
-      trailer(
-          new Rectangle(Vector2(center_.x() - TRAILER_WIDTH / 2, center_.y()),
-                        TRAILER_COLOR, TRAILER_WIDTH, TRAILER_HEIGHT)),
-      cabin(new Rectangle(
-          Vector2(center_.x() + CABIN_WIDTH / 2,
-                  (center_.y() + TRAILER_HEIGHT / 2) - CABIN_HEIGHT / 2),
-          CABIN_COLOR, CABIN_WIDTH, CABIN_HEIGHT)),
+      trailer(new Rectangle(Vector2(center_.x() - TRAILER_WIDTH / 2, center_.y()), TRAILER_COLOR, TRAILER_WIDTH, TRAILER_HEIGHT)),
+      cabin(new Rectangle(Vector2(center_.x() + CABIN_WIDTH / 2,
+                  (center_.y() + TRAILER_HEIGHT / 2) - CABIN_HEIGHT / 2), CABIN_COLOR, CABIN_WIDTH, CABIN_HEIGHT)),
       window(new Rectangle(
           Vector2(cabin->center().x(), cabin->center().y() - WINDOW_HEIGHT / 2),
           WINDOW_COLOR, WINDOW_WIDTH, WINDOW_HEIGHT)),
@@ -128,9 +124,22 @@ void Truck::copy(const Truck& other)
     engine = new Rectangle(*(other.engine));
 }
 
+
+void Truck::draw(PNG* canvas) const {
+	trailer->draw(canvas);
+	cabin->draw(canvas);
+	window->draw(canvas);
+	engine->draw(canvas);
+        int i = 0;
+	while(i<5){
+		wheels[i]->draw(canvas);
+		i++;
+	}
+}
+
 void Truck::clear()
-{
-    for (int i = 0; i < NUM_WHEELS; i++) {
+{  
+  for (int i = 0; i < 5; i++) {
         delete wheels[i];
         wheels[i] = NULL;
     }
@@ -140,4 +149,3 @@ void Truck::clear()
     delete window;
     delete engine;
 }
-
