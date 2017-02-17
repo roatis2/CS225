@@ -60,6 +60,9 @@ SkipList::SkipList()
 
     this->listHeight = 1;
     this->length = 0;
+
+    this->probability = 50;
+    this->maxLevel = 14;  // log(128 * 128)
 }
 
 
