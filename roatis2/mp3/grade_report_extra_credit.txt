@@ -1,0 +1,51 @@
+Grading r14479 by nwang16 committed on Sat Feb 11 02:34:12 CST 2017
+Monad Autograder
+Testing mp3.1 at 2017-02-18 01:29:00
+
+"Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration." ~ Stan Kelly-Bootle
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testInsertFront  . . . . . . . . [2 pts] - FAILED
+testInsertBack . . . . . . . . . [2 pts] - FAILED
+testDestructor10 (asan)  . . . . [5 pts] - FAILED
+testDestructor37 (asan)  . . . . [5 pts] - FAILED
+testReverse20_size . . . . . . . [1 pts] - FAILED
+testReverse20_forward  . . . . . [3 pts] - FAILED
+testReverse20_backward . . . . . [4 pts] - FAILED
+testReverse37_size . . . . . . . [1 pts] - FAILED
+testReverse37_forward  . . . . . [2 pts] - FAILED
+testReverse37_backward . . . . . [2 pts] - FAILED
+testReverseEmpty (asan)  . . . . [5 pts] - FAILED
+testReverse20_memory (asan)  . . [3 pts] - FAILED
+testReverseNth20_2_size  . . . . [1 pts] - FAILED
+testReverseNth20_2_forward . . . [3 pts] - FAILED
+testReverseNth20_2_backward  . . [4 pts] - FAILED
+testReverseNth37_4_size  . . . . [1 pts] - FAILED
+testReverseNth37_4_forward . . . [5 pts] - FAILED
+testReverseNth37_4_backward  . . [6 pts] - FAILED
+testReverseNth37_37  . . . . . . [3 pts] - FAILED
+testReverseNth37_4_memory (asan) [3 pts] - FAILED
+testReverseNthEmpty (asan) . . . [5 pts] - FAILED
+testWaterfall4_size  . . . . . . [1 pts] - FAILED
+testWaterfall4_forward . . . . . [3 pts] - FAILED
+testWaterfall4_backward  . . . . [4 pts] - FAILED
+testWaterfall7_size  . . . . . . [1 pts] - FAILED
+testWaterfall7_forward . . . . . [3 pts] - FAILED
+testWaterfall7_backward  . . . . [4 pts] - FAILED
+testWaterfall12_size . . . . . . [1 pts] - FAILED
+testWaterfall12_forward  . . . . [3 pts] - FAILED
+testWaterfall12_backward . . . . [4 pts] - FAILED
+testWaterfall7_memory (asan) . . [5 pts] - FAILED
+testWaterfall7_empty (asan)  . . [5 pts] - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
