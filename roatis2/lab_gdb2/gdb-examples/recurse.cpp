@@ -12,12 +12,14 @@ void recurse(int index, int length) {
 //
     if(index == 0)
         return;
-
-	for(int q=1; q<index; q++)
-		std::cout<<'*';
-	std::cout<<std::endl;
-
-	recurse(index+1, length);
+    for(int i=0; i<index; i++)
+	{
+	for(int q=0; q<=i; q++)
+	    {
+	    std::cout<<'*';
+	    }
+        std::cout<<std::endl;
+        }
 }
 
 
@@ -32,7 +34,7 @@ if (argc<2)
 
 int input = std::atoi(argv[1]);
 
-recurse(1,input);
+recurse(input,1);
 
 
 }

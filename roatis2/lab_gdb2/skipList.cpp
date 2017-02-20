@@ -9,18 +9,18 @@
  */
 
 #include "skipList.h"
-
+#include "skipNode.h"
 
 /**
  * Constructs the SkipList with one initial node, which is constructed with the provided values.
- * 
+ *
  * @param key The key to associate with the initial node
  * @param value The pixel to associate with the initial node
  */
-SkipList::SkipList(int key, RGBAPixel value) 
+
+SkipList::SkipList(int key, RGBAPixel value):SkipList()//moved SkipList to top
 {
-    SkipList();
-    insert(key, value);      
+    insert(key, value);
 }
 
 
@@ -57,8 +57,8 @@ void SkipList::insert(int key, RGBAPixel value)
     if (temp)
     {
         temp->value = value;
-
-    }   
+        return;
+    }
 
     length++;
 
@@ -79,7 +79,7 @@ void SkipList::insert(int key, RGBAPixel value)
             if(level < 0 )
                 break;
         }
-        else 
+        else
         {
             traverse = traverse->nodePointers[level].next;
             level = traverse->nodePointers.size()-1;
@@ -93,7 +93,7 @@ void SkipList::insert(int key, RGBAPixel value)
         head->nodePointers.push_back(SkipPointer());
         tail->nodePointers.push_back(SkipPointer());
     }
-     
+
     this->listHeight = max(this->listHeight, newNodeLevel);
 
     SkipNode * prev = traverse;
@@ -116,7 +116,7 @@ void SkipList::insert(int key, RGBAPixel value)
 
         }
 
-        if(forward->nodePointers.size() > (size_t)forwardLevel)
+        else if(forward->nodePointers.size() > (size_t)forwardLevel)
         {
             forward->nodePointers[forwardLevel].prev = newNode;
             newNode->nodePointers[forwardLevel].next = forward;
@@ -138,7 +138,7 @@ void SkipList::insert(int key, RGBAPixel value)
             backwardLevel++;
         }
 
-        if(prev->nodePointers.size() > (size_t)backwardLevel)
+        else if(prev->nodePointers.size() > (size_t)backwardLevel)
         {
             prev->nodePointers[backwardLevel].next = newNode;
             newNode->nodePointers[backwardLevel].prev = prev;
@@ -164,7 +164,7 @@ RGBAPixel SkipList::search(int key)
     SkipNode * retval;
     retval = find(key);
 
-    if (retval==NULL) 
+    if (retval != NULL)
         return retval->value;
 
     return RGBAPixel(0,0,0, 50);
@@ -181,7 +181,7 @@ SkipNode * SkipList::find(int key)
     SkipNode * retval;
     if ((rand() % 2) ==0)
         retval=findR(key);
-    else 
+    else
         retval=findI(key);
 
     return retval;
@@ -216,16 +216,22 @@ SkipNode * SkipList::findRHelper(int key, int level, SkipNode * curr)
     int nextKey =  curr->nodePointers[level].next->key;
 
     if (nextKey == key)
+    {
         ret = curr->nodePointers[level].next;
+        return ret;
+      }
 
-    if (nextKey > key) 
-        ret = findRHelper(key, level, curr);
+    else if (nextKey > key)
+      {
+        ret = findRHelper(key, level-1, curr);
+      }
 
     else
-        ret = findRHelper(key, level, curr->nodePointers[level].next);    
+        {
+          ret = findRHelper(key, level, curr->nodePointers[level].next);
+        }
 
-
-    return NULL;
+    return ret;
 }
 
 /**
@@ -248,6 +254,7 @@ SkipNode * SkipList::findI(int key)
         if (nextKey == key)
         {
             retNode = traverse->nodePointers[level].next;
+            return retNode;
         }
         else if (key < nextKey)
         {
@@ -259,7 +266,7 @@ SkipNode * SkipList::findI(int key)
         }
 
     }
-    return NULL;
+    return retNode;
 }
 
 
@@ -281,7 +288,10 @@ bool SkipList::remove(int key)
 
     // can't remove a node that doesn't exist
     if(node == NULL)
+      {
         ret = false;
+        return ret;
+      }
 
     length--;
 
