@@ -1,0 +1,34 @@
+Grading r19346 by roatis2 committed on Sun Feb 19 20:33:11 CST 2017
+Monad Autograder
+Testing lab_gdb2 at 2017-02-20 00:39:05
+
+"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testFind1_I . . . . . . [5 pts]  - passed
+testFind1_R . . . . . . [5 pts]  - passed
+testFind2_I . . . . . . [5 pts]  - passed
+testFind2_R . . . . . . [5 pts]  - passed
+testFind3_I . . . . . . [10 pts] - passed
+testFind3_R . . . . . . [10 pts] - passed
+testInsertAscending . . [5 pts]  - passed
+testInsertAscendingBack [5 pts]  - passed
+testInsertRandom  . . . [8 pts]  - passed
+testInsertRandomBack  . [8 pts]  - passed
+testInsertTough (asan)  [10 pts] - passed
+testRemoveEasy  . . . . [5 pts]  - passed
+testRemoveHard (asan) . [10 pts] - passed
+testConstructor1 (asan) [4 pts]  - passed
+testConstructor2 (asan) [5 pts]  - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
