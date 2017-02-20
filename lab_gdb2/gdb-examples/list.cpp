@@ -44,6 +44,7 @@ public:
 			head->prev=temp;
 			temp->prev=NULL;
 			head=temp;
+			temp=NULL;
 		}
 
 	}
