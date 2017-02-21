@@ -1,8 +1,8 @@
-Grading r18350 by enx-cs225autograder committed on Sun Feb 19 02:34:37 CST 2017
+Grading r20113 by enx-cs225autograder committed on Mon Feb 20 02:37:35 CST 2017
 Monad Autograder
-Testing mp3 at 2017-02-20 01:55:45
+Testing mp3 at 2017-02-21 01:23:15
 
-"At least for a while, in your heart of hearts you'll be confident only that the university will soon enough discover its error in awarding you the PhD, and at some point will brand you (in public no doubt) the fraud you know you are. This too will pass as you come to realize that students are extremely gullible and many of your colleagues are even greater frauds than you." ~ Berkeley PhD Advice
+"Rejoice!" ~ Kotomine Kirei
 
 Setting up test environment...
 Compiling...
