@@ -1,8 +1,8 @@
-Grading r20113 by enx-cs225autograder committed on Mon Feb 20 02:37:35 CST 2017
+Grading r20478 by enx-cs225autograder committed on Tue Feb 21 02:03:09 CST 2017
 Monad Autograder
-Testing mp3 at 2017-02-21 01:23:15
+Testing mp3 at 2017-02-22 01:23:02
 
-"Rejoice!" ~ Kotomine Kirei
+"Recursion is magic. " ~ Prof. Jeff Erickson | "Recursion is NOT magic." ~ Prof. Craig Zilles 
 
 Setting up test environment...
 Compiling...
