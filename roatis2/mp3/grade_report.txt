@@ -1,8 +1,8 @@
-Grading r20478 by enx-cs225autograder committed on Tue Feb 21 02:03:09 CST 2017
+Grading r20954 by enx-cs225autograder committed on Wed Feb 22 02:05:26 CST 2017
 Monad Autograder
-Testing mp3 at 2017-02-22 01:23:02
+Testing mp3 at 2017-02-23 01:25:36
 
-"Recursion is magic. " ~ Prof. Jeff Erickson | "Recursion is NOT magic." ~ Prof. Craig Zilles 
+"If you just rely on one model, you tend to amputate reality to make it fit your model." ~ David Brooks
 
 Setting up test environment...
 Compiling...
