@@ -1,8 +1,8 @@
-Grading r20954 by enx-cs225autograder committed on Wed Feb 22 02:05:26 CST 2017
+Grading r21503 by enx-cs225autograder committed on Thu Feb 23 02:10:45 CST 2017
 Monad Autograder
-Testing mp3 at 2017-02-23 01:25:36
+Testing mp3 at 2017-02-24 01:37:00
 
-"If you just rely on one model, you tend to amputate reality to make it fit your model." ~ David Brooks
+"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
 
 Setting up test environment...
 Compiling...
