@@ -25,10 +25,21 @@ namespace QuackFun {
 template <typename T>
 T sum(stack<T>& s)
 {
-    // Your code here
-    return T(); // stub return value (0 for primitive types). Change this!
-                // Note: T() is the default value for objects, and 0 for
-                // primitive types
+    T popped; //create a var to hold the value on the top
+    T sumStack; //var to hold the sum
+    if(s.size() == 0)//check is size is empty
+    {
+        sumStack = 0; //if it is, return  0 to be added onto the sum
+    }
+    else
+    {
+        popped = s.top(); //let popped be the value on the top of the stack
+        s.pop(); //actually pop that off so we can continue going through the stack
+        sumStack = popped + sum(s); //add that onto the sum and then recursively call the sum functoin on the new smaller stack
+        s.push(popped); //pop it back on so that the stack is unchanged in the end
+    }
+
+    return sumStack; //return this sum
 }
 
 /**
@@ -47,9 +58,54 @@ template <typename T>
 void scramble(queue<T>& q)
 {
     stack<T> s;
-    // optional: queue<T> q2;
+    int current = 1;
+	  int finished = 0;
+	  int size = int(q.size());
 
-    // Your code here
+    while(finished < size) //goes through whole list. will stop at end since finished starts at 0
+	  {
+	      if(current%2==1)//odd block, just move
+	      {
+	           int amtLeft = current;
+	           if(amtLeft > size-finished) //case where we have an awkward amount of blocks left
+	                 amtLeft = size-finished;
+             int i = 0;
+             while(i < amtLeft)
+		         {
+                 T x = q.front();
+                 q.push(x);
+		             q.pop();
+                 i++;
+		         }
+             current++;
+             finished += amtLeft;
+	      }
+
+        else//even block, reverse
+	      {
+	         int amtLeft = current;
+	         if(amtLeft > size-finished)
+	              amtLeft = size-finished;
+	         int i = 0;
+           while(i < amtLeft)
+		       {
+                T y = q.front();
+                s.push(y);
+		            q.pop();
+                i++;
+		       }
+           int j = 0;
+           while(j < amtLeft)
+		       {
+               T z = s.top();
+               q.push(z);
+		           s.pop();
+               j++;
+		       }
+           current++;
+           finished += amtLeft;
+	      }
+	  }
 }
 
 /**
@@ -69,11 +125,35 @@ void scramble(queue<T>& q)
 template <typename T>
 bool verifySame(stack<T>& s, queue<T>& q)
 {
-    bool retval = true; // optional
-    //T temp1; // rename me
-    //T temp2; // rename :)
+      bool retval = true; // given statement
 
-    return retval;
+      if(s.size() == 0)//base case that will be used in recursive step
+    	{
+             return true;
+      }
+
+      else
+      {
+          T x = s.top();//stack content storered and carried through each recursion step;
+    	    s.pop();
+    	    retval = verifySame(s, q);//at base case s will be empty making it identical to front of queue
+
+          if(x == q.front() && retval ==true)
+          {
+            retval = true;
+          }
+
+          else
+          {
+            retval = false;
+          }
+
+          retval = (retval && (x == q.front()));
+          s.push(x);//add previous s back onto stack
+          q.push(q.front());//shuffle front of queue to back
+    	    q.pop();//move first element of queue to the end
+      }
+
+      return retval;
 }
-
 }
