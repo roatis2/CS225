@@ -1,3 +1,6 @@
+#include "queue.h"
+#include "stack.h"
+
 /**
  * @file queue.cpp
  * Implementation of the Queue class.
@@ -14,9 +17,7 @@
 template <class T>
 void Queue<T>::enqueue(T const& newItem)
 {
-    /**
-     * @todo Your code here!
-     */
+    inStack.push(newItem); //add new item to end
 }
 
 /**
@@ -28,10 +29,14 @@ void Queue<T>::enqueue(T const& newItem)
 template <class T>
 T Queue<T>::dequeue()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+    if(outStack.isEmpty() == true) //check if stack is empty, it should be
+    {
+      while(inStack.isEmpty() == false) //loop until empty
+      {
+        outStack.push(inStack.pop()); //move items from inStack to outStack, this will reverse order
+      }
+    }
+    return outStack.pop(); //return object from end of stack which should have been at the beginning of the queue
 }
 
 /**
@@ -42,10 +47,7 @@ T Queue<T>::dequeue()
 template <class T>
 void Queue<T>::add(const T& theItem)
 {
-    /**
-     * @todo Your code here! Hint: this function should call a Queue
-     *  function to add the element to the Queue.
-     */
+    this->enqueue(theItem);
 }
 
 /**
@@ -56,12 +58,7 @@ void Queue<T>::add(const T& theItem)
 template <class T>
 T Queue<T>::remove()
 {
-    /**
-     * @todo Your code here! Hint: this function should call a Queue
-     *  function to remove an element from the Queue and return it. You will
-     *  need to replace the following line.
-     */
-    return T();
+    return this->dequeue(); //need to return an altered stack
 }
 
 /**
@@ -73,10 +70,14 @@ T Queue<T>::remove()
 template <class T>
 T Queue<T>::peek()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+    if(outStack.isEmpty() == true)//check if outstack is empty
+    {
+      while(inStack.isEmpty() == false) //loop through until inStack is empty
+      {
+        outStack.push(inStack.pop()); //move items from instack to outstack
+      }
+    }
+    return outStack.peek(); //returns item from front of queue without changing order
 }
 
 /**
@@ -87,8 +88,5 @@ T Queue<T>::peek()
 template <class T>
 bool Queue<T>::isEmpty() const
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return true;
+    return (inStack.isEmpty() && outStack.isEmpty() ); //returns true only is both are empty
 }

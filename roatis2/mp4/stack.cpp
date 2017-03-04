@@ -1,3 +1,6 @@
+#include "queue.h"
+#include "stack.h"
+
 /**
  * @file stack.cpp
  * Implementation of the Stack class.
@@ -20,9 +23,7 @@
 template<class T>
 void Stack<T>::push(T const & newItem)
 {
-    /**
-     * @todo Your code here!
-     */
+    myStack.push_front(newItem); //adds to front
 }
 
 /**
@@ -37,10 +38,9 @@ void Stack<T>::push(T const & newItem)
 template <class T>
 T Stack<T>::pop()
 {
-    /**
-     * @todo Your code here! You will have to replace the following line.
-     */
-    return T();
+    T topOfStack = myStack.front(); //set to front
+    myStack.pop_front(); //remove front item
+    return topOfStack; //return altered stack
 }
 
 /**
@@ -51,10 +51,7 @@ T Stack<T>::pop()
 template <class T>
 void Stack<T>::add(const T& theItem)
 {
-    /**
-     * @todo Your code here! Hint: this should call another Stack function
-     *  to add the element to the Stack.
-     */
+    push(theItem);
 }
 
 /**
@@ -65,12 +62,7 @@ void Stack<T>::add(const T& theItem)
 template <class T>
 T Stack<T>::remove()
 {
-    /**
-     * @todo Your code here! Hint: this should call another Stack function
-     *  to remove an element from the Stack and return it. You will need to
-     *  replace the following line.
-     */
-    return T();
+    return this->pop();
 }
 
 /**
@@ -86,10 +78,7 @@ T Stack<T>::remove()
 template <class T>
 T Stack<T>::peek()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+  return myStack.front(); //returns front item, this will not disturb ordering
 }
 
 /**
@@ -103,8 +92,6 @@ T Stack<T>::peek()
 template <class T>
 bool Stack<T>::isEmpty() const
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return true;
+
+    return myStack.empty(); //checks if empty
 }
