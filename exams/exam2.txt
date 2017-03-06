@@ -1,0 +1,196 @@
+Exam #2 score (roatis2): 0/200
+
+=== Grade Feedback for Problem "programming_bigThree_createCtor_garden" ===
+=====
+[0/100]
+
+--- stdout ---
+g++ flower.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ garden.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+
+
+--- stderr ---
+In file included from garden.cpp:2:0:
+garden.h:8:18: error: expected ‘;’ at end of member declaration
+   garden(flower *)
+                  ^
+make: *** [garden.o] Error 1
+
+
+--- submitted file: garden.cpp ---
+#include "flower.h"
+#include "garden.h"
+
+
+
+
+flower garden::getFlower(int row, int column) const {
+  return this->grid[row][column];
+}
+
+void garden::setFlower(int row, int column, const flower &f) {
+  this->grid[row][column] = f;
+}
+
+--- submitted file: garden.h ---
+#ifndef _GARDEN_H
+#define _GARDEN_H
+
+#include "flower.h"
+
+class garden {
+public:
+  garden(flower *)
+  flower getFlower(int row, int column) const;
+  void setFlower(int row, int column, const flower &f);
+
+private:
+  flower **grid;
+};
+
+#endif
+
+
+=== Grade Feedback for Problem "programming_operator_minus_schedule" ===
+=====
+[0/100]
+
+--- stdout ---
+g++ -std=c++1y -c -g -O0 -Wall -Wextra -pedantic   -c -o schedule.o schedule.cpp
+
+
+--- stderr ---
+schedule.cpp:40:61: error: no ‘const schedule& schedule::operator-(const schedule&)’ member function declared in class ‘schedule’
+ const schedule & schedule::operator-(const schedule & source){
+                                                             ^
+schedule.cpp: In member function ‘void schedule::clear()’:
+schedule.cpp:54:20: error: expected initializer before ‘<’ token
+     for(int i =0, i<count,i++)
+                    ^
+schedule.cpp:54:20: error: expected ‘;’ before ‘<’ token
+schedule.cpp:54:20: error: expected primary-expression before ‘<’ token
+schedule.cpp:54:30: error: expected ‘;’ before ‘)’ token
+     for(int i =0, i<count,i++)
+                              ^
+schedule.cpp:55:22: error: expected primary-expression before ‘[’ token
+       delete schedule[i];
+                      ^
+schedule.cpp:56:15: error: expected unqualified-id before ‘[’ token
+       schedule[i] = NULL;
+               ^
+schedule.cpp:58:22: error: expected primary-expression before ‘[’ token
+       delete schedule[];
+                      ^
+schedule.cpp:58:23: error: expected primary-expression before ‘]’ token
+       delete schedule[];
+                       ^
+schedule.cpp:59:16: error: expected unqualified-id before ‘=’ token
+       schedule = NULL;
+                ^
+schedule.cpp: At global scope:
+schedule.cpp:62:6: warning: unused parameter ‘source’ [-Wunused-parameter]
+ void schedule::copy(const schedule & source){
+      ^
+make: *** [schedule.o] Error 1
+
+
+--- submitted file: schedule.cpp ---
+#include "schedule.h"
+
+#include <iostream>
+using namespace std;
+
+//
+// In the `schedule` class, overload the `-` (minus) operator to the courses
+// contained in one schedule from the other.
+//
+// The result must be a `schedule` that contains only the courses found in the
+// first `schedule` that are not found on the second `schedule`.
+//
+
+schedule::schedule() {
+  count = 0;
+  courses = NULL;
+}
+
+void schedule::addCourse(const string course) {
+  string *new_courses = new string[this->count + 1];
+  for (int i = 0; i < this->count; i++) {
+    new_courses[i] = courses[i];
+  }
+  new_courses[count] = course;
+  count++;
+
+  if (courses) { delete[] courses; }
+  courses = new_courses;
+}
+
+int schedule::getCourseCount() const {
+  return count;
+}
+
+const string schedule::getCourse(const int index) const {
+  if (index < 0 || index >= count) { return NULL; }
+  else                             { return courses[index]; }
+}
+  /* code */
+const schedule & schedule::operator-(const schedule & source){
+  if (this != &source){
+      clear();
+      copy(source);
+    }
+  return *this;
+  }
+
+schedule :: ~schedule(){
+  clear();
+}
+
+void schedule::clear(){
+  if(this != NULL){
+    for(int i =0, i<count,i++)
+      delete schedule[i];
+      schedule[i] = NULL;
+  }
+      delete schedule[];
+      schedule = NULL;
+}
+
+void schedule::copy(const schedule & source){
+
+}
+
+--- submitted file: schedule.h ---
+#ifndef _SCHEDULE_H
+#define _SCHEDULE_H
+
+#include <string>
+using namespace std;
+
+//
+// In the `schedule` class, overload the `-` (minus) operator to the courses
+// contained in one schedule from the other.
+//
+// The result must be a `schedule` that contains only the courses found in the
+// first `schedule` that are not found on the second `schedule`.
+//
+
+class schedule {
+public:
+  schedule();
+  void addCourse(const string course);
+  int getCourseCount() const;
+  const string getCourse(const int index) const;
+  ~schedule();
+  schedule (const schedule & source);
+  void clear();
+  void copy(const schedule & source);
+
+private:
+  int count;
+  string *courses;
+};
+
+#endif
+
+
