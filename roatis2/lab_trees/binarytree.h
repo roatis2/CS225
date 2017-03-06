@@ -143,6 +143,13 @@ class BinaryTree
      * Look at the private helpers for height and printLeftToRight
      *  as examples.
      */
+    void mirrorHelp(Node * &subRoot);
+
+    bool isOrderedHelp(const Node* subRoot)const;
+
+    void printPathsHelp(const Node* subRoot, int trees[], int counter) const;
+
+
 
     /**
      * Private helper function for the public height function.
