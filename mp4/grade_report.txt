@@ -1,8 +1,8 @@
-Grading r26912 by enx-cs225autograder committed on Sun Mar  5 02:07:34 CST 2017
+Grading r27923 by enx-cs225autograder committed on Mon Mar  6 02:24:41 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-06 01:46:07
+Testing mp4 at 2017-03-07 01:34:44
 
-"Find your points of interest, compute HOG features, bung them into a classifier, and see what you get." ~ D.A. Forsyth
+"I did respond to your email, but I might have forgotten to hit send." ~ Cinda Heeren
 
 Setting up test environment...
 Compiling...
