@@ -1,8 +1,8 @@
-Grading r27923 by enx-cs225autograder committed on Mon Mar  6 02:24:41 CST 2017
+Grading r28102 by enx-cs225autograder committed on Tue Mar  7 02:13:14 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-07 01:34:44
+Testing mp4 at 2017-03-08 01:32:43
 
-"I did respond to your email, but I might have forgotten to hit send." ~ Cinda Heeren
+"It's like comparing a small apple with a medium-sized apple." ~ Jason Cho
 
 Setting up test environment...
 Compiling...
