@@ -1,8 +1,8 @@
-Grading r28102 by enx-cs225autograder committed on Tue Mar  7 02:13:14 CST 2017
+Grading r28400 by enx-cs225autograder committed on Wed Mar  8 02:14:24 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-08 01:32:43
+Testing mp4 at 2017-03-09 01:39:21
 
-"It's like comparing a small apple with a medium-sized apple." ~ Jason Cho
+"The slogan of Subversion for a while was "CVS done right", or something like that, and if you start with that kind of slogan, there's nowhere you can go. There is no way to do CVS right." ~ Linus Torvalds
 
 Setting up test environment...
 Compiling...
