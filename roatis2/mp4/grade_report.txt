@@ -1,8 +1,8 @@
-Grading r28400 by enx-cs225autograder committed on Wed Mar  8 02:14:24 CST 2017
+Grading r28809 by enx-cs225autograder committed on Thu Mar  9 02:21:05 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-09 01:39:21
+Testing mp4 at 2017-03-10 01:36:45
 
-"The slogan of Subversion for a while was "CVS done right", or something like that, and if you start with that kind of slogan, there's nowhere you can go. There is no way to do CVS right." ~ Linus Torvalds
+"Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration." ~ Stan Kelly-Bootle
 
 Setting up test environment...
 Compiling...
