@@ -33,8 +33,7 @@ class gradientColorPicker : public colorPicker
      * @param centerX X coordinate for the center of the gradient.
      * @param centerY Y coordinate for the center of the gradient.
      */
-    gradientColorPicker(RGBAPixel fadeColor1, RGBAPixel fadeColor2, int radius,
-                        int centerX, int centerY);
+    gradientColorPicker(RGBAPixel fadeColor1, RGBAPixel fadeColor2, int radius, int centerX, int centerY);
 
     /**
      * Picks the color for pixel (x, y).
@@ -73,7 +72,11 @@ class gradientColorPicker : public colorPicker
      * @todo Add any necessary private storage here! You may also add
      *	private helper functions as you see fit.
      */
-
+     RGBAPixel fadeColor1;
+     RGBAPixel fadeColor2;
+     int radius;
+     int centerX;
+     int centerY;
 };
 
 #endif
