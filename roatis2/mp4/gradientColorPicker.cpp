@@ -10,21 +10,24 @@
  * @param centerX X coordinate for the center of the gradient.
  * @param centerY Y coordinate for the center of the gradient.
  */
-gradientColorPicker::gradientColorPicker(RGBAPixel fadeColor1,
-                                         RGBAPixel fadeColor2, int radius,
-                                         int centerX, int centerY)
+gradientColorPicker::gradientColorPicker(RGBAPixel fadeColor1, RGBAPixel fadeColor2, int radius, int centerX, int centerY)
 {
     /**
      * @todo Construct your gradientColorPicker here! You may find it
      *	helpful to create additional member variables to store things.
      */
+     this->fadeColor1 = fadeColor1;
+     this->fadeColor2 = fadeColor2;
+     this->radius = radius;
+     this->centerX = centerX;
+     this->centerY = centerY;
 }
 
 /**
  * Picks the color for pixel (x, y).
  *
  * The first color fades into the second color as you move from the initial
- * fill point, the center, to the radius. Beyond the radius, all pixels
+ * fill point, the center, to the radius. Beyond the radius, all pixels     color = fillolor;
  * should be just color2.
  *
  * You should calculate the distance between two points using the standard
@@ -51,9 +54,14 @@ gradientColorPicker::gradientColorPicker(RGBAPixel fadeColor1,
  */
 RGBAPixel gradientColorPicker::operator()(int x, int y)
 {
-    RGBAPixel color;
-    /**
-     * @todo Return the correct color here!
-     */
+    int d = abs(centerX - x) + abs(centerY - y); //calculate the distance from the center to point (x,y)
+
+    if(d > radius)
+      return fadeColor2;
+
+    RGBAPixel color(fadeColor1.red - (d*fadeColor1.red/radius) + (d*fadeColor2.red/radius),
+                    fadeColor1.green - (d*fadeColor1.green/radius) + (d*fadeColor2.green/radius),
+                    fadeColor1.blue - (d*fadeColor1.blue/radius) + (d*fadeColor2.blue/radius));
+
     return color;
 }
