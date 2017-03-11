@@ -1,0 +1,247 @@
+Grading r30439 by roatis2 committed on Fri Mar 10 23:52:20 CST 2017
+Monad Autograder
+Testing mp4 at 2017-03-11 01:37:37
+
+"Programs must be written for people to read, and only incidentally for machines to execute." ~ Abelson and Sussman
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testStackPushPeek  . . . . . . . [1 pts] - passed
+testStackPushPop . . . . . . . . [1 pts] - passed
+testStackManyPushesPeek  . . . . [1 pts] - passed
+testStackManyPushesTwoPops . . . [1 pts] - passed
+testStackManyOperations  . . . . [1 pts] - passed
+testStackDuplicateElements . . . [1 pts] - passed
+testQueueEnqueuePeek . . . . . . [1 pts] - passed
+testQueueEnqueueDequeue  . . . . [1 pts] - passed
+testQueueManyEnqueuesPeek  . . . [1 pts] - passed
+testQueueManyEnqueuesTwoDequeues [1 pts] - passed
+testQueueManyOperations  . . . . [1 pts] - passed
+stack_peek_1 . . . . . . . . . . [1 pts] - passed
+stack_pop_peek_1 . . . . . . . . [1 pts] - passed
+stack_pop_2  . . . . . . . . . . [2 pts] - passed
+stack_isEmpty_1  . . . . . . . . [1 pts] - passed
+stack_isEmpty_2  . . . . . . . . [1 pts] - passed
+stack_push_pop_isEmpty . . . . . [2 pts] - passed
+stack_push_and_pop . . . . . . . [2 pts] - passed
+queue_peek_1 . . . . . . . . . . [1 pts] - passed
+queue_dequeue_peek_1 . . . . . . [2 pts] - passed
+queue_dequeue_2  . . . . . . . . [2 pts] - passed
+queue_isEmpty_1  . . . . . . . . [1 pts] - passed
+queue_isEmpty_2  . . . . . . . . [1 pts] - passed
+queue_enqueue_dequeue_isEmpty  . [2 pts] - passed
+queue_enqueue_and_dequeue  . . . [2 pts] - passed
+testThroughStackQueue  . . . . . [2 pts] - passed
+testEnqueueConstantTime  . . . . [2 pts] - passed
+testDequeueConstantTime  . . . . [2 pts] - passed
+testEnqueuePeekDequeueTime . . . [2 pts] - passed
+solid_picker_15  . . . . . . . . [4 pts] - passed
+gradient_picker_16 . . . . . . . [4 pts] - passed
+gradient_picker_17 . . . . . . . [4 pts] - passed
+DFS_solid  . . . . . . . . . . . [4 pts] - passed
+BFS_solid  . . . . . . . . . . . [4 pts] - passed
+DFS_grid . . . . . . . . . . . . [4 pts] - FAILED: Aborted
+BFS_grid . . . . . . . . . . . . [4 pts] - FAILED: Aborted
+DFS_gradient . . . . . . . . . . [4 pts] - passed
+BFS_gradient . . . . . . . . . . [4 pts] - passed
+DFS_18 . . . . . . . . . . . . . [2 pts] - passed
+DFS_19 . . . . . . . . . . . . . [2 pts] - passed
+DFS_20 . . . . . . . . . . . . . [2 pts] - passed
+DFS_21 . . . . . . . . . . . . . [2 pts] - passed
+DFS_22 . . . . . . . . . . . . . [2 pts] - passed
+DFS_23 . . . . . . . . . . . . . [2 pts] - passed
+BFS_24 . . . . . . . . . . . . . [2 pts] - passed
+BFS_25 . . . . . . . . . . . . . [2 pts] - passed
+BFS_26 . . . . . . . . . . . . . [2 pts] - passed
+BFS_27 . . . . . . . . . . . . . [2 pts] - passed
+BFS_28 . . . . . . . . . . . . . [2 pts] - passed
+BFS_29 . . . . . . . . . . . . . [2 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 92
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+DFS_grid [4 points]
+Result: FAILED: Aborted
+Took 0ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+*** Error in `./proxy': free(): invalid next size (fast): 0x0000000001a16aa0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7f525202d503]
+./proxy[0x47cfe2]
+./proxy[0x470787]
+./proxy[0x47de95]
+./proxy[0x46f2de]
+./proxy[0x449a75]
+./proxy[0x45801f]
+./proxy[0x416edd]
+./proxy[0x412af9]
+./proxy[0x410546]
+./proxy[0x416ca6]
+./proxy[0x411e61]
+./proxy[0x40dd25]
+./proxy[0x40d51b]
+./proxy[0x40cd09]
+./proxy[0x40c643]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5251fd2b35]
+./proxy[0x40b294]
+======= Memory map: ========
+00400000-00539000 r-xp 00000000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+00738000-0073a000 r--p 00138000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+0073a000-0073b000 rw-p 0013a000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+01a14000-01a35000 rw-p 00000000 00:00 0                                  [heap]
+01a35000-01c11000 rw-p 00000000 00:00 0                                  [heap]
+7f524c000000-7f524c021000 rw-p 00000000 00:00 0 
+7f524c021000-7f5250000000 ---p 00000000 00:00 0 
+7f5251b97000-7f5251b99000 r-xp 00000000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251b99000-7f5251d99000 ---p 00002000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d99000-7f5251d9a000 r--p 00002000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d9a000-7f5251d9b000 rw-p 00003000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d9b000-7f5251db0000 r-xp 00000000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251db0000-7f5251faf000 ---p 00015000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251faf000-7f5251fb0000 r--p 00014000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251fb0000-7f5251fb1000 rw-p 00015000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251fb1000-7f5252167000 r-xp 00000000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f5252167000-7f5252367000 ---p 001b6000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f5252367000-7f525236b000 r--p 001b6000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f525236b000-7f525236d000 rw-p 001ba000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f525236d000-7f5252372000 rw-p 00000000 00:00 0 
+7f5252372000-7f5252387000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252387000-7f5252586000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252586000-7f5252587000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252587000-7f5252588000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252588000-7f5252688000 r-xp 00000000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252688000-7f5252888000 ---p 00100000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252888000-7f5252889000 r--p 00100000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252889000-7f525288a000 rw-p 00101000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f525288a000-7f5252995000 r-xp 00000000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252995000-7f5252b95000 ---p 0010b000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252b95000-7f5252b9c000 rw-p 0010b000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252b9c000-7f5252b9f000 rw-p 00000000 00:00 0 
+7f5252b9f000-7f5252ba6000 r-xp 00000000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252ba6000-7f5252da5000 ---p 00007000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da5000-7f5252da6000 r--p 00006000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da6000-7f5252da7000 rw-p 00007000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da7000-7f5252dd0000 r-xp 00000000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252dd0000-7f5252fd0000 ---p 00029000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd0000-7f5252fd1000 r--p 00029000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd1000-7f5252fd2000 rw-p 0002a000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd2000-7f5252fe9000 r-xp 00000000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f5252fe9000-7f52531e8000 ---p 00017000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531e8000-7f52531e9000 r--p 00016000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531e9000-7f52531ea000 rw-p 00017000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531ea000-7f52531ee000 rw-p 00000000 00:00 0 
+7f52531ee000-7f525320e000 r-xp 00000000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f52533ea000-7f52533f0000 rw-p 00000000 00:00 0 
+7f525340a000-7f525340b000 rw-p 00000000 00:00 0 
+7f525340b000-7f525340d000 rw-p 00000000 00:00 0 
+7f525340d000-7f525340e000 r--p 0001f000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f525340e000-7f525340f000 rw-p 00020000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f525340f000-7f5253410000 rw-p 00000000 00:00 0 
+7ffdba681000-7ffdba6a2000 rw-p 00000000 00:00 0                          [stack]
+7ffdba6d8000-7ffdba6da000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+BFS_grid [4 points]
+Result: FAILED: Aborted
+Took 0ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+*** Error in `./proxy': free(): invalid next size (fast): 0x0000000001a16aa0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7f525202d503]
+./proxy[0x47cfe2]
+./proxy[0x470787]
+./proxy[0x470a2f]
+./proxy[0x47d825]
+./proxy[0x46fe7e]
+./proxy[0x449d25]
+./proxy[0x4596df]
+./proxy[0x416edd]
+./proxy[0x412af9]
+./proxy[0x410546]
+./proxy[0x416ca6]
+./proxy[0x411e61]
+./proxy[0x40dd25]
+./proxy[0x40d51b]
+./proxy[0x40cd09]
+./proxy[0x40c643]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5251fd2b35]
+./proxy[0x40b294]
+======= Memory map: ========
+00400000-00539000 r-xp 00000000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+00738000-0073a000 r--p 00138000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+0073a000-0073b000 rw-p 0013a000 00:12 1431111718                         /dev/shm/cs225student/autograder/monad/monad/mp4_grade/proxy
+01a14000-01a35000 rw-p 00000000 00:00 0                                  [heap]
+7f524c000000-7f524c021000 rw-p 00000000 00:00 0 
+7f524c021000-7f5250000000 ---p 00000000 00:00 0 
+7f5251b97000-7f5251b99000 r-xp 00000000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251b99000-7f5251d99000 ---p 00002000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d99000-7f5251d9a000 r--p 00002000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d9a000-7f5251d9b000 rw-p 00003000 fd:00 89022                      /usr/lib64/libdl-2.17.so
+7f5251d9b000-7f5251db0000 r-xp 00000000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251db0000-7f5251faf000 ---p 00015000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251faf000-7f5251fb0000 r--p 00014000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251fb0000-7f5251fb1000 rw-p 00015000 fd:00 89426                      /usr/lib64/libz.so.1.2.7
+7f5251fb1000-7f5252167000 r-xp 00000000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f5252167000-7f5252367000 ---p 001b6000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f5252367000-7f525236b000 r--p 001b6000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f525236b000-7f525236d000 rw-p 001ba000 fd:00 89016                      /usr/lib64/libc-2.17.so
+7f525236d000-7f5252372000 rw-p 00000000 00:00 0 
+7f5252372000-7f5252387000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252387000-7f5252586000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252586000-7f5252587000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252587000-7f5252588000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f5252588000-7f5252688000 r-xp 00000000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252688000-7f5252888000 ---p 00100000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252888000-7f5252889000 r--p 00100000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f5252889000-7f525288a000 rw-p 00101000 fd:00 89056                      /usr/lib64/libm-2.17.so
+7f525288a000-7f5252995000 r-xp 00000000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252995000-7f5252b95000 ---p 0010b000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252b95000-7f5252b9c000 rw-p 0010b000 00:33 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f5252b9c000-7f5252b9f000 rw-p 00000000 00:00 0 
+7f5252b9f000-7f5252ba6000 r-xp 00000000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252ba6000-7f5252da5000 ---p 00007000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da5000-7f5252da6000 r--p 00006000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da6000-7f5252da7000 rw-p 00007000 fd:00 89078                      /usr/lib64/librt-2.17.so
+7f5252da7000-7f5252dd0000 r-xp 00000000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252dd0000-7f5252fd0000 ---p 00029000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd0000-7f5252fd1000 r--p 00029000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd1000-7f5252fd2000 rw-p 0002a000 fd:00 89446                      /usr/lib64/libpng15.so.15.13.0
+7f5252fd2000-7f5252fe9000 r-xp 00000000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f5252fe9000-7f52531e8000 ---p 00017000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531e8000-7f52531e9000 r--p 00016000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531e9000-7f52531ea000 rw-p 00017000 fd:00 89074                      /usr/lib64/libpthread-2.17.so
+7f52531ea000-7f52531ee000 rw-p 00000000 00:00 0 
+7f52531ee000-7f525320e000 r-xp 00000000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f52533ea000-7f52533f0000 rw-p 00000000 00:00 0 
+7f525340a000-7f525340b000 rw-p 00000000 00:00 0 
+7f525340b000-7f525340d000 rw-p 00000000 00:00 0 
+7f525340d000-7f525340e000 r--p 0001f000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f525340e000-7f525340f000 rw-p 00020000 fd:00 89009                      /usr/lib64/ld-2.17.so
+7f525340f000-7f5253410000 rw-p 00000000 00:00 0 
+7ffdba681000-7ffdba6a2000 rw-p 00000000 00:00 0                          [stack]
+7ffdba6d8000-7ffdba6da000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 92
+
