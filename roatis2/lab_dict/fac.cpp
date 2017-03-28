@@ -90,14 +90,15 @@ unsigned long memoized_fac(unsigned long n)
 {
     /* Fancy initialization of the static map with an initializer list.
      * Maps 0->0, 1->1. */
-    static map<unsigned long, unsigned long> memo = {
-        {0, 1},
-    };
-
+    static map<unsigned long, unsigned long> memo = { {0, 1} };
+    // memo[0] = 1       -> line above
     auto lookup = memo.find(n);
-    if (lookup != memo.end()) {
+    if (lookup != memo.end()) //we found key
+    {
         return lookup->second;
-    } else {
+    }
+    else //key does not exist in the map
+    {
         unsigned long result = n * memoized_fac(n - 1);
         memo[n] = result;
         return result;

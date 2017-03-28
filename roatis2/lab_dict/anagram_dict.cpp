@@ -22,7 +22,17 @@ using std::ifstream;
  */
 AnagramDict::AnagramDict(const string& filename)
 {
-    /* Your code goes here! */
+  ifstream wordsFile(filename);
+  string word;
+  vector <string> wordsFromFile; //vector that will contain strings of words from the file
+  if (wordsFile.is_open()) {
+    /* Reads a line from `wordsFile` into `word` until the file ends. */
+    while (getline(wordsFile, word))
+        wordsFromFile.push_back(word);
+  }
+
+
+
 }
 
 /**
