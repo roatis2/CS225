@@ -43,8 +43,8 @@ PronounceDict::PronounceDict(const string& pronun_dict_filename)
             if (line[0] != '#' && *line_begin != ";;;") {
                 /* Associate the word with the rest of the line
                  * (its pronunciation). */
-                auto temp_itr = line_begin;
-                dict[*temp_itr] = vector<string>(++line_begin, line_end);
+                //auto temp_itr = line_begin;    <- getting rid of line
+                dict[*line_begin] = vector<string>(++line_begin, line_end);
             }
         }
     }
@@ -58,8 +58,7 @@ PronounceDict::PronounceDict(const string& pronun_dict_filename)
  * @param pronun_dict Maps a string word to a vector of strings
  * representing its pronunciation.
  */
-PronounceDict::PronounceDict(const map<string, vector<string>>& pronun_dict)
-    : dict(pronun_dict)
+PronounceDict::PronounceDict(const map<string, vector<string>> & pronun_dict) : dict(pronun_dict) //second is the pronunciation of a word
 {
     /* Nothing to see here. */
 }
@@ -75,5 +74,17 @@ PronounceDict::PronounceDict(const map<string, vector<string>>& pronun_dict)
 bool PronounceDict::homophones(const string& word1, const string& word2) const
 {
     /* Your code goes here! */
-    return true;
+    string capitalWord1 = word1;
+    string capitalWord2 = word2;
+    /* convert words to upper case*/
+    std::transform(capitalWord1.begin(), capitalWord1.end(), capitalWord1.begin(), ::toupper);
+    std::transform(capitalWord2.begin(), capitalWord2.end(), capitalWord2.begin(), ::toupper);
+    /*find the words in the dictionary*/
+    auto findWord1 = dict.find(capitalWord1);
+    auto findWord2 = dict.find(capitalWord2);
+    /*return true if both words found and pronunciation matches*/
+    if(findWord1 != dict.end() && findWord2 != dict.end() && findWord1->second == findWord2->second)
+      return true;
+    else
+      return false;
 }

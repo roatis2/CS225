@@ -40,8 +40,7 @@ class PronounceDict
      * @param pronun_dict Maps a string word to a vector of strings
      * representing its pronunciation.
      */
-    PronounceDict(
-        const std::map<std::string, std::vector<std::string>>& pronun_dict);
+    PronounceDict(const std::map<std::string, std::vector<std::string>>& pronun_dict);
 
     /**
      * Uses the dictionary to determine if the two words are homophones.
