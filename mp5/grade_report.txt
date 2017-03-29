@@ -1,0 +1,601 @@
+Grading r35685 by enx-cs225autograder committed on Tue Mar 28 01:23:07 CDT 2017
+Monad Autograder
+Testing mp5 at 2017-03-29 01:07:32
+
+"One day I will shoot you with this bullet. Can you still say that you love me?" ~ Re-l Mayer
+
+Setting up test environment...
+Compiling...
+================================================================
+unit_tests.cpp:52:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:59:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 8);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:67:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 16);
+        ~~~~~ ^
+unit_tests.cpp:75:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 8);
+        ~~~~~ ^
+unit_tests.cpp:83:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(monochrome, 16);
+                 ^     ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:98:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:106:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:115:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:119:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:137:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:147:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:148:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree second(monochrome, 8);
+                 ^      ~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:158:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:159:26: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * second = new Quadtree(small, 8);
+                                ^        ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:163:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:172:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:183:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(tiny, 2);
+                 ^     ~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:194:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:205:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 512);
+                 ^     ~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+unit_tests.cpp:52:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:59:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 8);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:67:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 16);
+        ~~~~~ ^
+unit_tests.cpp:75:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 8);
+        ~~~~~ ^
+unit_tests.cpp:83:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(monochrome, 16);
+                 ^     ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:98:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:106:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:115:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:119:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:137:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:147:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:148:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree second(monochrome, 8);
+                 ^      ~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:158:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:159:26: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * second = new Quadtree(small, 8);
+                                ^        ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:163:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:172:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:183:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(tiny, 2);
+                 ^     ~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:194:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:205:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 512);
+                 ^     ~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ld: no input files
+unit_tests.cpp:52:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:59:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 8);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:67:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 16);
+        ~~~~~ ^
+unit_tests.cpp:75:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 8);
+        ~~~~~ ^
+unit_tests.cpp:83:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(monochrome, 16);
+                 ^     ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:98:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:106:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:115:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:119:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:137:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:147:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:148:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree second(monochrome, 8);
+                 ^      ~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:158:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:159:26: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * second = new Quadtree(small, 8);
+                                ^        ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:163:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:172:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:183:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(tiny, 2);
+                 ^     ~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:194:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:205:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 512);
+                 ^     ~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+clang-3.5: error: no such file or directory: 'unit_tests.o'
+make: *** [proxy] Error 1
+make: *** Waiting for unfinished jobs....
+unit_tests.cpp:52:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:59:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 8);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:67:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 16);
+        ~~~~~ ^
+unit_tests.cpp:75:8: error: no member named 'buildTree' in 'Quadtree'
+        first.buildTree(small, 8);
+        ~~~~~ ^
+unit_tests.cpp:83:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(monochrome, 16);
+                 ^     ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:98:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:106:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:115:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:119:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:137:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:147:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:148:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree second(monochrome, 8);
+                 ^      ~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:158:25: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * first = new Quadtree(large, 16);
+                               ^        ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:159:26: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree * second = new Quadtree(small, 8);
+                                ^        ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:163:14: error: no matching constructor for initialization of 'Quadtree'
+        first = new Quadtree(monochrome, 16);
+                    ^        ~~~~~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:172:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(pixel, 1);
+                 ^     ~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:183:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(tiny, 2);
+                 ^     ~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:194:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(small, 16);
+                 ^     ~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+unit_tests.cpp:205:11: error: no matching constructor for initialization of 'Quadtree'
+        Quadtree first(large, 512);
+                 ^     ~~~~~~~~~~
+./quadtree.h:15:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 2 were provided
+class Quadtree
+      ^
+./quadtree.h:15:7: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 2 were provided
+./quadtree.h:15:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 2 were provided
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ld: no input files
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
