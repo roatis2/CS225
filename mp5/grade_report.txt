@@ -1,8 +1,8 @@
-Grading r35685 by enx-cs225autograder committed on Tue Mar 28 01:23:07 CDT 2017
+Grading r35991 by enx-cs225autograder committed on Wed Mar 29 01:35:24 CDT 2017
 Monad Autograder
-Testing mp5 at 2017-03-29 01:07:32
+Testing mp5 at 2017-03-30 01:10:18
 
-"One day I will shoot you with this bullet. Can you still say that you love me?" ~ Re-l Mayer
+"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
 
 Setting up test environment...
 Compiling...
