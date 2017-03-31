@@ -29,11 +29,12 @@ int main()
 
     // test pruneSize and idealPrune (slow in valgrind, so you may want to
     // comment these out when doing most of your testing for memory leaks)
+    /*
     cout << "fullTree.pruneSize(0) = "      << fullTree.pruneSize(0) << endl;
     cout << "fullTree.pruneSize(100) = "    << fullTree.pruneSize(100) << endl;
     cout << "fullTree.pruneSize(1000) = "   << fullTree.pruneSize(1000) << endl;
     cout << "fullTree.pruneSize(100000) = " << fullTree.pruneSize(100000) << endl;
-
+    */
     cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
     cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
 
@@ -44,7 +45,7 @@ int main()
     imgOut.writeToFile("outCopy.png");
 
     // test clockwiseRotate
-    fullTree.clockwiseRotate();
+    halfTree.clockwiseRotate();
     imgOut = fullTree.decompress();
     imgOut.writeToFile("outRotated.png");
 
