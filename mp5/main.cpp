@@ -45,7 +45,7 @@ int main()
     imgOut.writeToFile("outCopy.png");
 
     // test clockwiseRotate
-    halfTree.clockwiseRotate();
+    fullTree.clockwiseRotate();
     imgOut = fullTree.decompress();
     imgOut.writeToFile("outRotated.png");
 
