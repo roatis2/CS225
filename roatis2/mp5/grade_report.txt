@@ -1,8 +1,8 @@
-Grading r35991 by enx-cs225autograder committed on Wed Mar 29 01:35:24 CDT 2017
+Grading r36577 by enx-cs225autograder committed on Thu Mar 30 01:38:58 CDT 2017
 Monad Autograder
-Testing mp5 at 2017-03-30 01:10:18
+Testing mp5 at 2017-03-31 01:20:56
 
-"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
+"The most amazing achievement of the computer software industry is its continuing cancellation of the steady and staggering gains made by the computer hardware industry." ~ Henry Petroski
 
 Setting up test environment...
 Compiling...
