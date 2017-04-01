@@ -1,0 +1,201 @@
+Grading r38027 by roatis2 committed on Fri Mar 31 15:42:58 CDT 2017
+Monad Autograder
+Testing mp5 at 2017-04-01 01:51:19
+
+"There's no real reason for a lot of the things that I say." ~ Urvashi Khandelwal
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_default_ctor  . . . . [1 pts] - passed
+test_ctor_1  . . . . . . . [1 pts] - passed
+test_ctor_2  . . . . . . . [2 pts] - passed
+test_buildTree_1 . . . . . [2 pts] - passed
+test_buildTree_2 . . . . . [1 pts] - passed
+test_buildTree_3 . . . . . [2 pts] - passed
+test_cctor_1 . . . . . . . [1 pts] - passed
+test_cctor_2 . . . . . . . [1 pts] - passed
+test_cctor_3 . . . . . . . [1 pts] - passed
+test_cctor_4 . . . . . . . [1 pts] - passed
+test_assign_op_1 . . . . . [1 pts] - passed
+test_assign_op_2 . . . . . [1 pts] - passed
+test_assign_op_3 . . . . . [1 pts] - passed
+test_assign_op_4 . . . . . [1 pts] - passed
+test_getPixel_1  . . . . . [1 pts] - passed
+test_getPixel_2  . . . . . [2 pts] - passed
+test_getPixel_3  . . . . . [2 pts] - passed
+test_getPixel_4  . . . . . [2 pts] - passed
+test_decompress_unpruned_1 [1 pts] - passed
+test_decompress_unpruned_2 [1 pts] - passed
+test_decompress_unpruned_3 [1 pts] - passed
+test_decompress_unpruned_4 [1 pts] - passed
+time_getPixel_logn . . . . [4 pts] - passed
+time_decompress_n (asan) . [4 pts] - passed
+valgrind_big3 (asan) . . . [4 pts] - passed
+test_clockwiseRotate_1 . . [1 pts] - passed
+test_clockwiseRotate_2 . . [1 pts] - FAILED: unit_tests.cpp:333: Assertion (rVal == soln) failed
+test_clockwiseRotate_3 . . [2 pts] - FAILED: unit_tests.cpp:343: Assertion (rVal == soln) failed
+test_clockwiseRotate_4 . . [2 pts] - FAILED: unit_tests.cpp:354: Assertion (rVal == soln) failed
+test_prune_1 . . . . . . . [2 pts] - passed
+test_prune_2 . . . . . . . [3 pts] - passed
+test_prune_3 . . . . . . . [2 pts] - passed
+test_prune_4 . . . . . . . [5 pts] - passed
+test_prune_copy  . . . . . [2 pts] - passed
+test_prune_rotate  . . . . [2 pts] - FAILED: unit_tests.cpp:407: Assertion (rVal == soln) failed
+test_prune_getPixel  . . . [3 pts] - passed
+test_pruneSize_1 . . . . . [2 pts] - passed
+test_pruneSize_2 . . . . . [2 pts] - passed
+test_pruneSize_3 . . . . . [2 pts] - passed
+test_pruneSize_4 . . . . . [2 pts] - passed
+test_pruneSize_5 . . . . . [2 pts] - passed
+test_idealPrune_1  . . . . [2 pts] - FAILED: unit_tests.cpp:457: [first.idealPrune(1) => 9999] != [44802 => 44802]
+test_idealPrune_2  . . . . [3 pts] - passed
+test_idealPrune_3  . . . . [2 pts] - FAILED: unit_tests.cpp:472: [first.idealPrune(1) => 9999] != [0 => 0]
+test_idealPrune_4  . . . . [5 pts] - passed
+val_clockwiseRotate (asan) [2 pts] - FAILED:     #3 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #4 0x4ebb78 in monad_shared::unit_test_input:
+val_prune (asan) . . . . . [4 pts] - passed
+val_idealPrune (asan)  . . [3 pts] - passed
+test_const_correctness . . [4 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 87
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_clockwiseRotate_2 [1 points]
+Result: FAILED: unit_tests.cpp:333: Assertion (rVal == soln) failed
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_clockwiseRotate_3 [2 points]
+Result: FAILED: unit_tests.cpp:343: Assertion (rVal == soln) failed
+Took 179ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_clockwiseRotate_4 [2 points]
+Result: FAILED: unit_tests.cpp:354: Assertion (rVal == soln) failed
+Took 215ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_prune_rotate [2 points]
+Result: FAILED: unit_tests.cpp:407: Assertion (rVal == soln) failed
+Took 164ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_idealPrune_1 [2 points]
+Result: FAILED: unit_tests.cpp:457: [first.idealPrune(1) => 9999] != [44802 => 44802]
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_idealPrune_3 [2 points]
+Result: FAILED: unit_tests.cpp:472: [first.idealPrune(1) => 9999] != [0 => 0]
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+val_clockwiseRotate (run under asan) [2 points]
+Result: FAILED:     #3 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #4 0x4ebb78 in monad_shared::unit_test_input:
+Took unknown time (30000ms timeout)
+Output:
+----------------------------------------------------------------
+Running val_clockwiseRotate [worth 2 points, output below]
+
+=================================================================
+==24296==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x41f46b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x685dcb in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685dcb)
+    #2 0x4ebb78 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ebb78)
+    #3 0x4d0cc3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4d0cc3)
+    #4 0x4c1d4c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4c1d4c)
+    #5 0x4bc3c2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4bc3c2)
+    #6 0x4b2087 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b2087)
+    #7 0x4b1227 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b1227)
+    #8 0x4ad989 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ad989)
+    #9 0x4ab2de in main (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ab2de)
+    #10 0x7fb2f8599b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x41f46b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ae3cc in Quadtree::buildTreeHelper(PNG const&, int, Quadtree::QuadtreeNode*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ae3cc)
+    #2 0x6ac4d0 in Quadtree::buildTree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac4d0)
+    #3 0x6ac0ef in Quadtree::Quadtree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac0ef)
+    #4 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #5 0x4ebb78 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ebb78)
+    #6 0x4d0cc3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4d0cc3)
+    #7 0x4c1d4c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4c1d4c)
+    #8 0x4bc3c2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4bc3c2)
+    #9 0x4b2087 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b2087)
+    #10 0x4b1227 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b1227)
+    #11 0x4ad989 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ad989)
+    #12 0x4ab2de in main (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ab2de)
+    #13 0x7fb2f8599b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x41f46b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ae156 in Quadtree::buildTreeHelper(PNG const&, int, Quadtree::QuadtreeNode*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ae156)
+    #2 0x6ac4d0 in Quadtree::buildTree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac4d0)
+    #3 0x6ac0ef in Quadtree::Quadtree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac0ef)
+    #4 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #5 0x4ebb78 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ebb78)
+    #6 0x4d0cc3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4d0cc3)
+    #7 0x4c1d4c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4c1d4c)
+    #8 0x4bc3c2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4bc3c2)
+    #9 0x4b2087 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b2087)
+    #10 0x4b1227 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b1227)
+    #11 0x4ad989 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ad989)
+    #12 0x4ab2de in main (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ab2de)
+    #13 0x7fb2f8599b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x41f46b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6adf1d in Quadtree::buildTreeHelper(PNG const&, int, Quadtree::QuadtreeNode*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6adf1d)
+    #2 0x6ac4d0 in Quadtree::buildTree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac4d0)
+    #3 0x6ac0ef in Quadtree::Quadtree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac0ef)
+    #4 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #5 0x4ebb78 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ebb78)
+    #6 0x4d0cc3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4d0cc3)
+    #7 0x4c1d4c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4c1d4c)
+    #8 0x4bc3c2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4bc3c2)
+    #9 0x4b2087 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b2087)
+    #10 0x4b1227 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4b1227)
+    #11 0x4ad989 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ad989)
+    #12 0x4ab2de in main (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x4ab2de)
+    #13 0x7fb2f8599b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x41f46b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ac366 in Quadtree::buildTree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac366)
+    #2 0x6ac0ef in Quadtree::Quadtree(PNG const&, int) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x6ac0ef)
+    #3 0x685e02 in proxy_test::val_clockwiseRotate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp5_grade/proxy-asan+0x685e02)
+    #4 0x4ebb78 in monad_shared::unit_test_input::
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 87
+
