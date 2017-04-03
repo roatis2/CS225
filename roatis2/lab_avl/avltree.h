@@ -162,7 +162,7 @@ class AVLTree
     void rotateRightLeft(Node*& node);
 
     /**
-     * A left-right rotation.
+     * A left-right rotation.->left
      * This function should simply call rotateLeft and rotateRight.
      * @param node The node to rotate
      */
@@ -176,12 +176,13 @@ class AVLTree
      */
     void rebalance(Node*& node);
 
+    /*helper function for rebalance*/
+    int getBalance(Node * & node);
     /**
      * @param node The node's height to check
      * @return The height of the node if it's non-`NULL` or -1 if it is `NULL`
      */
     int heightOrNeg1(const Node* node) const;
-
     /**
      * Swap the keys and values of two nodes.
      * @param first The first node to swap
@@ -194,6 +195,11 @@ class AVLTree
      * @param subRoot The current node in the recursion
      */
     Node* copy(const Node* subRoot);
+
+    /*helper functions for remove*/
+    void noChildRemove(Node* & subRoot);
+    void oneChildRemove(Node* & subRoot);
+    void twoChildRemove(Node* & subRoot);
 
     /**
      * Private helper function for clear that clears beneath the parameter node.
