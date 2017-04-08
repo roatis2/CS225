@@ -54,8 +54,7 @@ class KDTree
      * @return A boolean value indicating whether the first Point is smaller
      *  than the second Point in the curDim dimension.
      */
-    bool smallerDimVal(const Point<Dim>& first, const Point<Dim>& second,
-                       int curDim) const;
+    bool smallerDimVal(const Point<Dim>& first, const Point<Dim>& second, int curDim) const;
 
     /**
      * Determines if a Point is closer to the target Point than another
@@ -95,8 +94,7 @@ class KDTree
      *  to target than currentBest. Ties should be broken with
      *  Point::operator<().
      */
-    bool shouldReplace(const Point<Dim>& target, const Point<Dim>& currentBest,
-                       const Point<Dim>& potential) const;
+    bool shouldReplace(const Point<Dim>& target, const Point<Dim>& currentBest, const Point<Dim>& potential) const;
 
     /**
      * Constructs a KDTree from a vector of Points, each having dimension Dim.
@@ -220,9 +218,7 @@ class KDTree
      *  kdtree_extras.cpp.
      * Prints the KDTree to the terminal in a pretty way.
      */
-    void printTree(ostream& out = cout,
-                   colored_out::enable_t enable_bold = colored_out::COUT,
-                   int modWidth = -1) const;
+    void printTree(ostream& out = cout, colored_out::enable_t enable_bold = colored_out::COUT, int modWidth = -1) const;
 
     /**
      * You do not need to modify this function. Its implementation is in
@@ -241,13 +237,21 @@ class KDTree
     int getPrintData(int low, int high) const;
 
     /** Helper function for grading */
-    void printTree(int low, int high, std::vector<std::string>& output,
-                   int left, int top, int width, int currd) const;
+    void printTree(int low, int high, std::vector<std::string>& output, int left, int top, int width, int currd) const;
 
     /**
      * @todo Add your helper functions here.
      */
-
+     /*should replace helper*/
+     int distanceToTarget(const Point<Dim>& target, const Point<Dim>& currentNode) const;
+     /*build tree helper*/
+     void buildKDTree(int dim, int left, int right);
+     /*helper for build tree helper*/
+     void quickSelect(int median, int left, int right, int dim);
+     /*helper for quickSelect*/
+     int partition(int left, int right, int pivot, int dim);
+     /*helper for find nearest neighbor*/
+     Point<Dim> nnHelper(int left, int right, int dim, const Point<Dim>& query, const Point<Dim>& currBest) const;
 };
 
 #include "kdtree.cpp"
