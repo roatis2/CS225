@@ -1,0 +1,41 @@
+Grading r42405 by roatis2 committed on Fri Apr  7 23:58:20 CDT 2017
+Monad Autograder
+Testing mp6.1 at 2017-04-08 00:26:26
+
+"The cheating sheet is key to success in CS 412 course." ~ CS 412 TA
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testSmallerDimVal . . . . . [4 pts] - passed
+testShouldReplace . . . . . [4 pts] - passed
+testLinearCtor_1_10 . . . . [6 pts] - passed
+testLinearCtor_3_31 . . . . [6 pts] - passed
+testLinearCtor_2_14 . . . . [6 pts] - passed
+testLinearNNS_1_10  . . . . [6 pts] - passed
+testLinearNNS_3_31  . . . . [6 pts] - passed
+testLinearNNS_2_14  . . . . [6 pts] - passed
+testDeceptiveNNOneLevelCtor [4 pts] - FAILED
+testDeceptiveNNOneLevelNNS  [4 pts] - FAILED
+testMinesCtor . . . . . . . [4 pts] - passed
+testMinesNNS  . . . . . . . [4 pts] - passed
+testDeceptiveMinesCtor  . . [4 pts] - FAILED
+testDeceptiveMinesNNS . . . [4 pts] - FAILED
+testTieBreakingCtor . . . . [4 pts] - FAILED
+testTieBreakingNNS  . . . . [4 pts] - FAILED
+testLeftRecurseCtor . . . . [4 pts] - FAILED
+testLeftRecurseNNS  . . . . [4 pts] - passed
+testRandom1Ctor . . . . . . [4 pts] - FAILED
+testRandom1NNS  . . . . . . [4 pts] - FAILED
+testRandom2Ctor . . . . . . [4 pts] - FAILED
+testRandom2NNS  . . . . . . [4 pts] - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 56
+
