@@ -1,0 +1,44 @@
+Grading r42453 by enx-cs225autograder committed on Sat Apr  8 00:33:40 CDT 2017
+Monad Autograder
+Testing mp6 at 2017-04-09 00:30:56
+
+"We don't have time to stop for gas, we're already late." ~ Mike Cleron
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testSmallerDimVal . . . . . [3 pts]  - passed
+testShouldReplace . . . . . [3 pts]  - passed
+testLinearCtor_1_10 . . . . [4 pts]  - passed
+testLinearCtor_3_31 . . . . [4 pts]  - passed
+testLinearCtor_2_14 . . . . [4 pts]  - passed
+testLinearNNS_1_10  . . . . [4 pts]  - passed
+testLinearNNS_3_31  . . . . [4 pts]  - passed
+testLinearNNS_2_14  . . . . [4 pts]  - passed
+testDeceptiveNNOneLevelCtor [4 pts]  - FAILED
+testDeceptiveNNOneLevelNNS  [3 pts]  - FAILED
+testMinesCtor . . . . . . . [3 pts]  - passed
+testMinesNNS  . . . . . . . [4 pts]  - passed
+testDeceptiveMinesCtor  . . [3 pts]  - FAILED
+testDeceptiveMinesNNS . . . [5 pts]  - FAILED
+testTieBreakingCtor . . . . [3 pts]  - FAILED
+testTieBreakingNNS  . . . . [3 pts]  - FAILED
+testLeftRecurseCtor . . . . [3 pts]  - FAILED
+testLeftRecurseNNS  . . . . [3 pts]  - passed
+testRandom1Ctor . . . . . . [3 pts]  - FAILED
+testRandom1NNS  . . . . . . [3 pts]  - FAILED
+testRandom2Ctor . . . . . . [3 pts]  - FAILED
+testRandom2NNS  . . . . . . [3 pts]  - FAILED
+testCheckeredMosaic . . . . [12 pts] - FAILED
+testPrimaryColorMosaic  . . [6 pts]  - FAILED
+testRandomMosaic  . . . . . [6 pts]  - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 40
+
