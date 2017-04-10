@@ -1,8 +1,8 @@
-Grading r42453 by enx-cs225autograder committed on Sat Apr  8 00:33:40 CDT 2017
+Grading r42856 by enx-cs225autograder committed on Sun Apr  9 00:39:36 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-09 00:30:56
+Testing mp6 at 2017-04-10 01:48:13
 
-"We don't have time to stop for gas, we're already late." ~ Mike Cleron
+"**** ******** **** nickels!!!" ~ Chase Geigle
 
 Setting up test environment...
 Compiling...
