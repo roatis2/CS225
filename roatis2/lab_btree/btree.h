@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <cmath>
 
 /**
  * BTree class. Provides interfaces for inserting and finding elements in
@@ -349,10 +350,42 @@ class BTree
  * the index of val in elements.
  */
 template <class T, class C>
+size_t binarySearch(const std::vector<T>& elements, const C& val, size_t lower_bound, size_t upper_bound)
+{
+  size_t middle = (upper_bound + lower_bound)/2; //set what we will use as middle of elements
+  /*case where we found the right index*/
+  if(val > elements[middle] && val < elements[middle + 1])
+    return middle + 1;
+  if(val == elements[middle])
+    return middle;
+  /*search 1st or 2nd half of elements*/
+  if(val < elements[middle])
+    return binarySearch(elements, val, lower_bound, middle);
+  else
+    return binarySearch(elements, val, middle + 1, upper_bound);
+}
+
+/*takes an arbitrary vector and arbitrary value and tries to find the index in the vector the value can be inserted at such that the vector will remain in sorted order.*/
+template <class T, class C>
 size_t insertion_idx(const std::vector<T>& elements, const C& val)
 {
     /* TODO Your code goes here! */
-    return 5;
+    /*find size of elements vector*/
+    size_t size = size_t(elements.size());
+    /*case where vector is empty*/
+    if(size == 0)
+      return 0;
+    /*case where key we want to insert is smaller than first element*/
+    if(elements[0] > val)
+      return 0;
+    /*case where key we want to insert is equal to last element*/
+    if(elements[size - 1] == val)
+      return size - 1;
+    /*case where key we want to insert is larger than last element*/
+    if(elements[size - 1] < val)
+      return size;
+    /*use binary search to find index, passes logn test*/
+    return binarySearch(elements, val, 0, size - 1);
 }
 
 #include "btree_given.cpp"
