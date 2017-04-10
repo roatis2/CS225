@@ -1,0 +1,323 @@
+Exam #4 score (roatis2): 100/200
+
+=== Grade Feedback for Problem "programming_binaryTree_traversal_countLeafs" ===
+[10/10]: Test: Binary tree w/ three nodes
+[10/10]: Test: Binary tree w/ four nodes
+[20/20]: Test: Binary tree w/ five nodes
+[20/20]: Test: Binary tree w/ seven nodes
+[20/20]: Test: Binary tree w/ nine nodes
+[20/20]: Test: Binary tree w/ eleven nodes
+=====
+[100/100]
+
+--- stdout ---
+g++ main.cpp binarytree.cpp -std=c++1y -g -O0 -Wall -Wextra -pedantic -o binarytree-test
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (6 assertions in 6 test cases)
+
+
+
+--- stderr ---
+
+
+--- submitted file: binarytree.cpp ---
+#define _BINARYTREE_CPP
+#include "binarytree.h"
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+
+template <typename T>
+int BinaryTree<T>::countLeafNodes() {
+  return countLeafNodes(root);
+}
+
+template <typename T>
+int BinaryTree<T>::countLeafNodes(Node *& root) {
+  int leaves = 0;
+    if(root == NULL)
+      return 0;
+    else if(root->left == NULL && root->right == NULL)
+      leaves = 1;
+    else if(root->left==NULL)
+      leaves = countLeafNodes(root->right);
+    else if(root->right==NULL)
+      leaves = countLeafNodes(root->left);
+    else
+      leaves = countLeafNodes(root->left) + countLeafNodes(root->right);
+
+  return leaves;
+}
+/**
+ * Constructor to create an empty tree.
+ */
+template <typename T>
+BinaryTree<T>::BinaryTree() : root(NULL) {
+  /* nothing */
+}
+
+/**
+ * Inserts into the BinaryTree, taking a pseudo-random path to a leaf where
+ * it is inserted.
+ * @param elem The element to insert
+ */
+template <typename T>
+void BinaryTree<T>::insert(const T& elem) {
+  insert(root, elem);
+}
+
+template <typename T>
+void BinaryTree<T>::insert(Node*& node, const T& elem)
+{
+    // If we're at a NULL pointer, we can put our element here
+    if (node == NULL)
+        node = new Node(elem);
+
+    // Go left or right based on pseudorandom even/odd
+    else if (rand() % 2 == 0)
+        insert(node->left, elem);
+    else
+        insert(node->right, elem);
+}
+
+--- submitted file: binarytree.h ---
+#ifndef _BINARYTREE_H
+#define _BINARYTREE_H
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T>
+class BinaryTree {
+  private:
+    struct Node {
+        T elem;
+        Node* left;
+        Node* right;
+        Node(const T& element) : elem(element), left(NULL), right(NULL) { }
+    };
+
+    Node* root;
+    void insert(Node*& node, const T& elem);
+    int countLeafNodes(Node*& root);
+
+  public:
+    BinaryTree();
+    int countLeafNodes();
+    void insert(const T& elem);
+};
+
+#ifndef _BINARYTREE_CPP
+#include "binarytree.cpp"
+#endif
+
+#endif
+
+
+=== Grade Feedback for Problem "programming_stlstack_gameNight_leaders" ===
+[0/30]: Test: Given Test Case (by ref)
+[0/70]: Test: Given Test Case (by value)
+     Message: SIGSEGV
+=====
+[0/100]
+
+--- stdout ---
+g++ main.cpp person.cpp gamenight.cpp -std=c++1y -g -O0 -Wall -Wextra -pedantic -o gamenight-test
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by ref)
+-------------------------------------------------------------------------------
+main.cpp:58
+...............................................................................
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x00000000014a26b0
+with message:
+  First leader: Must be Carol, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x00000000014a1aa0
+with message:
+  Second leader: Must be Bob, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x00000000014a3e90
+with message:
+  First non-leader: Must be Erin, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x00000000014a3e40
+with message:
+  Second non-leader: Must be Don, but you function returned NULL
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 5 | 1 passed | 4 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by value)
+-------------------------------------------------------------------------------
+main.cpp:90
+...............................................................................
+
+main.cpp:90: FAILED:
+due to a fatal error condition:
+  First leader: Must be Carol, but you function returned NULL
+  SIGSEGV - Segmentation violation signal
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by ref)
+-------------------------------------------------------------------------------
+main.cpp:58
+...............................................................................
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x000000000103cd30
+with message:
+  First leader: Must be Carol, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x000000000103aaa0
+with message:
+  Second leader: Must be Bob, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x000000000103cdd0
+with message:
+  First non-leader: Must be Erin, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p == expected )
+with expansion:
+  NULL == 0x000000000103cd80
+with message:
+  Second non-leader: Must be Don, but you function returned NULL
+
+-------------------------------------------------------------------------------
+Given Test Case (by value)
+-------------------------------------------------------------------------------
+main.cpp:90
+...............................................................................
+
+main.cpp:90: FAILED:
+due to a fatal error condition:
+  First leader: Must be Carol, but you function returned NULL
+  SIGSEGV - Segmentation violation signal
+
+===============================================================================
+test cases: 2 | 2 failed
+assertions: 6 | 1 passed | 5 failed
+
+
+
+--- stderr ---
+gamenight.cpp:12:6: warning: unused parameter ‘p’ [-Wunused-parameter]
+ void GameNight::arrival(Person *p) {
+      ^
+
+
+--- submitted file: gamenight.cpp ---
+#include <iostream>
+#include <cstdlib>
+#include <queue>
+#include <stack>
+
+#include "gamenight.h"
+#include "person.h"
+
+using namespace std;
+
+
+void GameNight::arrival(Person *p) {
+
+}
+
+Person * GameNight::getLeader() {
+  return NULL;
+}
+
+Person * GameNight::getNonLeader() {
+  return NULL;
+}
+
+--- submitted file: gamenight.h ---
+#ifndef _GAMENIGHT_H
+#define _GAMENIGHT_H
+
+#include <iostream>
+#include <cstdlib>
+#include <queue>
+#include <stack>
+
+#include "person.h"
+
+using namespace std;
+
+class GameNight {
+  private:
+
+
+  public:
+
+    void arrival(Person *p);
+    Person *getLeader();
+    Person *getNonLeader();
+};
+
+#endif
+
+
