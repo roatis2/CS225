@@ -1,8 +1,8 @@
-Grading r44148 by enx-cs225autograder committed on Mon Apr 10 01:56:33 CDT 2017
+Grading r44253 by enx-cs225autograder committed on Tue Apr 11 00:38:04 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-11 00:28:40
+Testing mp6 at 2017-04-12 00:30:59
 
-"There's an old story about the person who wished his computer were as easy to use as his telephone. That wish has come true, since I no longer know how to use my telephone." ~ Bjarne Stroustrup
+"C++ : Where friends have access to your private members." ~ Gavin Russell Baker
 
 Setting up test environment...
 Compiling...
