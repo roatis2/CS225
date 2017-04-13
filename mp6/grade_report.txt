@@ -1,44 +1,6 @@
-Grading r44253 by enx-cs225autograder committed on Tue Apr 11 00:38:04 CDT 2017
-Monad Autograder
-Testing mp6 at 2017-04-12 00:30:59
-
-"C++ : Where friends have access to your private members." ~ Gavin Russell Baker
-
-Setting up test environment...
-Compiling...
-================================================================
-
-
-Running tests...
-================================================================
-testSmallerDimVal . . . . . [3 pts]  - passed
-testShouldReplace . . . . . [3 pts]  - passed
-testLinearCtor_1_10 . . . . [4 pts]  - passed
-testLinearCtor_3_31 . . . . [4 pts]  - passed
-testLinearCtor_2_14 . . . . [4 pts]  - passed
-testLinearNNS_1_10  . . . . [4 pts]  - passed
-testLinearNNS_3_31  . . . . [4 pts]  - passed
-testLinearNNS_2_14  . . . . [4 pts]  - passed
-testDeceptiveNNOneLevelCtor [4 pts]  - FAILED
-testDeceptiveNNOneLevelNNS  [3 pts]  - FAILED
-testMinesCtor . . . . . . . [3 pts]  - passed
-testMinesNNS  . . . . . . . [4 pts]  - passed
-testDeceptiveMinesCtor  . . [3 pts]  - FAILED
-testDeceptiveMinesNNS . . . [5 pts]  - FAILED
-testTieBreakingCtor . . . . [3 pts]  - FAILED
-testTieBreakingNNS  . . . . [3 pts]  - FAILED
-testLeftRecurseCtor . . . . [3 pts]  - FAILED
-testLeftRecurseNNS  . . . . [3 pts]  - passed
-testRandom1Ctor . . . . . . [3 pts]  - FAILED
-testRandom1NNS  . . . . . . [3 pts]  - FAILED
-testRandom2Ctor . . . . . . [3 pts]  - FAILED
-testRandom2NNS  . . . . . . [3 pts]  - FAILED
-testCheckeredMosaic . . . . [12 pts] - FAILED
-testPrimaryColorMosaic  . . [6 pts]  - FAILED
-testRandomMosaic  . . . . . [6 pts]  - FAILED
-
-
-Total score...
-================================================================
-TOTAL SCORE: 40
-
+Grading r44383 by enx-cs225autograder committed on Wed Apr 12 00:40:04 CDT 2017
+/bin/ld: monad.o: undefined reference to symbol '__cxa_free_exception@@CXXABI_1.3'
+/usr/lib64/libstdc++.so.6: error adding symbols: DSO missing from command line
+clang-3.5.real: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [pure-monad] Error 1
+error: failed to compile monad from source
