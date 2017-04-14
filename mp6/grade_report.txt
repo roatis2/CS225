@@ -1,8 +1,8 @@
-Grading r44383 by enx-cs225autograder committed on Wed Apr 12 00:40:04 CDT 2017
+Grading r44581 by enx-cs225autograder committed on Thu Apr 13 00:50:41 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-13 00:42:06
+Testing mp6 at 2017-04-14 00:33:54
 
-"We know about as much about software quality problems as they knew about the Black Plague in the 1600s. We've seen the victims' agonies and helped burn the corpses. We don't know what causes it; we don't really know if there is only one disease. We just suffer -- and keep pouring our sewage into our water supply." ~ Tom Van Vleck
+"One day I will shoot you with this bullet. Can you still say that you love me?" ~ Re-l Mayer
 
 Setting up test environment...
 Compiling...
