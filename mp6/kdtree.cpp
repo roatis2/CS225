@@ -2,7 +2,6 @@
  * @file kdtree.cpp
  * Implementation of KDTree class.
  */
-#include <cmath>
 
 template <int Dim>
 bool KDTree<Dim>::smallerDimVal(const Point<Dim>& first,
@@ -11,38 +10,38 @@ bool KDTree<Dim>::smallerDimVal(const Point<Dim>& first,
     /**
      * @todo Implement this function!
      */
-     /*tiebreaker case*/
-     if(first[curDim] == second[curDim])
-      return first < second;
-     else if(first[curDim] < second[curDim])
-      return true;
-     else
-      return false;
+     if(curDim<0 || curDim > Dim){
+       return false;
+     }
+     if(first[curDim] == second[curDim]){
+       return first<second;
+     }
+    return first[curDim] < second[curDim];
 }
 
 template <int Dim>
-bool KDTree<Dim>::shouldReplace(const Point<Dim>& target, const Point<Dim>& currentBest, const Point<Dim>& potential) const
+bool KDTree<Dim>::shouldReplace(const Point<Dim>& target,
+                                const Point<Dim>& currentBest,
+                                const Point<Dim>& potential) const
 {
     /**
      * @todo Implement this function!
      */
-     if(replaceHelper(target, potential) == replaceHelper(target, currentBest))
+    int d1 = replaceHelper(target, currentBest);
+    int d2 = replaceHelper(target, potential);
+    if(d2 == d1){
       return potential < currentBest;
-     else if(replaceHelper(target, potential) < replaceHelper(target, currentBest))
-      return true;
-    else
-      return false;
+    }
+    return d2 <d1;
 }
 
 template <int Dim>
-int KDTree<Dim>::replaceHelper(const Point<Dim>& target, const Point<Dim>& currentPoint)const{ //calculate distance btwn pts
-    /* distance = sqrt((t1 - cp1)^2 + (t2 - cp2)^2 - (t3 - cp3)^2 .... (tk - cpk)^2) */
-    int distanceSquared = 0;
-    for(size_t i = 0; i < Dim; i++){
-      distanceSquared = distanceSquared + pow((target[i] - currentPoint[i]),2);
-    }
-    int distance = sqrt(distanceSquared);
-    return distance;
+int KDTree<Dim>::replaceHelper(const Point<Dim>& d1, const Point<Dim>& d2)const{ //calculate distance btwn pts
+  int ret = 0;
+  for(int i = 0; i<Dim; i++){
+      ret += (d1[i]-d2[i]) * (d1[i]-d2[i]);
+  }
+  return ret;
 }
 
 template <int Dim>
