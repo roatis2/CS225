@@ -1,8 +1,8 @@
-Grading r44581 by enx-cs225autograder committed on Thu Apr 13 00:50:41 CDT 2017
+Grading r44874 by enx-cs225autograder committed on Fri Apr 14 00:46:25 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-14 00:33:54
+Testing mp6 at 2017-04-15 00:31:17
 
-"One day I will shoot you with this bullet. Can you still say that you love me?" ~ Re-l Mayer
+"If debugging is the process of removing bugs, then programming must be the process of putting them in." ~ Edsger W. Dijkstra
 
 Setting up test environment...
 Compiling...
