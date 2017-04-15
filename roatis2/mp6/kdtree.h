@@ -243,10 +243,10 @@ class KDTree
      * @todo Add your helper functions here.
      */
      /*should replace helper*/
-     int distanceToTarget(const Point<Dim>& target, const Point<Dim>& currentNode) const;
+     int replaceHelper(const Point<Dim>& target, const Point<Dim>& currentNode) const;
      /*build tree helper*/
-     void buildKDTree(int dim, int left, int right);
-     /*helper for build tree helper*/
+     void buildHelper(int left, int right, int dim);
+     /*hlper for buildHelper*/
      void quickSelect(int median, int left, int right, int dim);
      /*helper for quickSelect*/
      int partition(int left, int right, int pivot, int dim);
