@@ -69,34 +69,39 @@ LogfileParser::LogfileParser(const string& fname) : whenVisitedTable(256)
          * this problem. This should also build the uniqueURLs member
          * vector as well.
          */
+         string urls = ll.url;
+         string cust = ll.customer;
+         time_t timevisit = ll.date;
+         string customerkey = cust + urls;
          bool found = false;
-         pageVisitedTable.insert(ll.customer,true);
-		     for(auto & it : uniqueURLs){
-		 	    if(it == ll.url)
+          pageVisitedTable.insert(cust,true);
+ 		     for(auto & it : uniqueURLs){
+ 		 	    if(it == urls)
+           {
+ 				     found = true;
+ 				     break;
+ 			     }
+ 		     }
+          /*if not found*/
+          if(!found)
+ 		 	      uniqueURLs.push_back(urls);
+          /*<date case*/
+          if(hasVisited(cust,urls) && dateVisited(cust,urls) < timevisit)
           {
-				     found = true;
-				     break;
-			     }
-		     }
-         /*if not found*/
-         if(!found)
-		 	      uniqueURLs.push_back(ll.url);
-         /*<date case*/
-         if(whenVisitedTable.keyExists(ll.customer+ll.url) && whenVisitedTable.find(ll.customer+ll.url) < ll.date)
-         {
-			      whenVisitedTable.remove(ll.customer+ll.url);
-			      whenVisitedTable.insert(ll.customer+ll.url,ll.date);
-		     }
-         /*>date case*/
-         else if(whenVisitedTable.keyExists(ll.customer+ll.url) && whenVisitedTable.find(ll.customer+ll.url)>ll.date)
-         {/*do nothing*/}
+ 			      whenVisitedTable.remove(customerkey);
+ 			      whenVisitedTable.insert(customerkey,timevisit);
+ 		     }
+          /*>date case*/
+          else if(hasVisited(cust,urls) && dateVisited(cust,urls)>timevisit)
+          {/*do nothing*/}
 
-         else
-			       whenVisitedTable.insert(ll.customer+ll.url,ll.date);
-         }
+          else
+ 			       whenVisitedTable.insert(customerkey,timevisit);
+          }
 
-    infile.close();
-}
+
+     infile.close();
+ }
 
 /**
  * Determines if a given customer has ever visited the given url.
