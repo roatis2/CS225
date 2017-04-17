@@ -85,9 +85,39 @@ void LPHashTable<K, V>::insert(K const& key, V const& value)
      *  0.7). **Do this check *after* increasing elems!!** Also, don't
      *  forget to mark the cell for probing with should_probe!
      */
+     elems++;
+     if(shouldResize() == false){ //finds to see if we should be resizing our table based on our hash function
+    //if we dont need to we shouldn't
+     }else{
+       resizeTable(); //if we do need to we have a function below that will resize our table for us
+     }
+     size_t tempindex = hash(key, size); //create an index to hold the values of the hash at our key
+     pair<K, V> * p= new pair<K,V>(key, value);
+     //for(int i = idx; i < ?; i++){
+      //if(should_probe[i] == true){
 
-    (void) key;   // prevent warnings... When you implement this function, remove this line.
-    (void) value; // prevent warnings... When you implement this function, remove this line.
+      //}else{
+        //table[i] = p;
+        //should_probe[i] = true;
+      //}
+      while(should_probe[tempindex] == true){
+        //size_t tempindexSum = tempindex+1;
+        tempindex = (tempindex + 1) % size;
+      }
+
+      should_probe[tempindex] = true;
+      table[tempindex] = p;
+
+     //if (shouldResize())
+      //   resizeTable();
+     //pair<K, V> p(key, value);
+     //size_t idx = hash(key, size);
+    // table[idx].push_front(p); find a way to do this, LP style.. for loop????
+
+
+
+    //(void) key;   // prevent warnings... When you implement this function, remove this line.
+    //(void) value; // prevent warnings... When you implement this function, remove this line.
 }
 
 template <class K, class V>

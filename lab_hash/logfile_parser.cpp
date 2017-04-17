@@ -69,7 +69,32 @@ LogfileParser::LogfileParser(const string& fname) : whenVisitedTable(256)
          * this problem. This should also build the uniqueURLs member
          * vector as well.
          */
-    }
+         bool found = false;
+         pageVisitedTable.insert(ll.customer,true);
+		     for(auto & it : uniqueURLs){
+		 	    if(it == ll.url)
+          {
+				     found = true;
+				     break;
+			     }
+		     }
+         /*if not found*/
+         if(!found)
+		 	      uniqueURLs.push_back(ll.url);
+         /*<date case*/
+         if(whenVisitedTable.keyExists(ll.customer+ll.url) && whenVisitedTable.find(ll.customer+ll.url) < ll.date)
+         {
+			      whenVisitedTable.remove(ll.customer+ll.url);
+			      whenVisitedTable.insert(ll.customer+ll.url,ll.date);
+		     }
+         /*>date case*/
+         else if(whenVisitedTable.keyExists(ll.customer+ll.url) && whenVisitedTable.find(ll.customer+ll.url)>ll.date)
+         {/*do nothing*/}
+
+         else
+			       whenVisitedTable.insert(ll.customer+ll.url,ll.date);
+         }
+
     infile.close();
 }
 
@@ -85,11 +110,7 @@ bool LogfileParser::hasVisited(const string& customer, const string& url) const
     /**
      * @todo Implement this function.
      */
-
-    (void) customer; // prevent warnings... When you implement this function, remove this line.
-    (void) url;      // prevent warnings... When you implement this function, remove this line.
-
-    return true; // replaceme
+    return whenVisitedTable.keyExists(customer+url);
 }
 
 /**
@@ -109,10 +130,10 @@ time_t LogfileParser::dateVisited(const string& customer,
      * @todo Implement this function.
      */
 
-    (void) customer; // prevent warnings... When you implement this function, remove this line.
-    (void) url;      // prevent warnings... When you implement this function, remove this line.
-
-    return time_t(); // replaceme
+    if(hasVisited(customer,url))
+      return whenVisitedTable.find(customer+url);
+    else
+      return time_t();
 }
 
 /**
