@@ -1,4 +1,4 @@
-Exam #6 score (roatis2): 20/200
+Exam #6 score (roatis2): 20/100
 
 === Grade Feedback for Problem "programming_mtreeToBinaryTree" ===
 [20/20]: Test: Simple Tree Test (height=1, m=2)
