@@ -1,0 +1,639 @@
+Exam #5 score (roatis2): 100/200
+
+=== Grade Feedback for Problem "programming_quadtree_tallyDeviants" ===
+[20/20]: Test: Recursion correctness w/ zero tolerance leaf nodes
+[20/20]: Test: Recursion correctness w/ high tolerance leaf nodes
+[30/30]: Test: Recursion correctness w/ exam-provided image
+[30/30]: Test: Exam-Provided Test
+=====
+[100/100]
+
+--- stdout ---
+g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c rgbapixel.cpp -o rgbapixel.o
+g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c quadtree.cpp -o quadtree.o
+g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c png.cpp -o png.o
+g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c quadtree_given.cpp -o quadtree_given.o
+g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable main.cpp rgbapixel.o quadtree.o png.o quadtree_given.o -o main
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+===============================================================================
+All tests passed (3 assertions in 1 test case)
+
+===============================================================================
+All tests passed (6 assertions in 4 test cases)
+
+
+
+--- stderr ---
+
+
+--- submitted file: quadtree.cpp ---
+#include <cstddef>
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+#include "quadtree.h"
+#include "png.h"
+
+
+int Quadtree::tallyDeviants(RGBAPixel const & target, QuadtreeNode const * curNode, int tolerance) const {
+  if(curNode == NULL)
+    return 0;
+
+  if(curNode->nwChild == NULL){
+    if(tolerance < maxDev(target, curNode)){
+      return 1;
+    }
+  }
+
+  int total = tallyDeviants(target, curNode->neChild, tolerance) + tallyDeviants(target, curNode->nwChild, tolerance) + tallyDeviants(target, curNode->seChild, tolerance) + tallyDeviants(target, curNode->swChild, tolerance);
+  return total;
+}
+
+
+
+// Quadtree
+//   - parameters: none
+//   - constructor for the Quadtree class; makes an empty tree
+Quadtree::Quadtree() : root(NULL), resolution(-1)
+{
+}
+
+// Quadtree
+//   - parameters: PNG const & source - reference to a const PNG
+//                    object, from which the Quadtree will be built
+//                 int resolution - resolution of the portion of source
+//                    from which this tree will be built
+//   - constructor for the Quadtree class; creates a Quadtree representing
+//        the resolution by resolution block in the upper-left corner of
+//        source
+Quadtree::Quadtree(PNG const& source, int setresolution)
+    : resolution(setresolution)
+{
+    buildTree(root, source, 0, 0, resolution);
+}
+
+// Quadtree
+//   - parameters: Quadtree const & other - reference to a const Quadtree
+//                    object, which the current Quadtree will be a copy of
+//   - copy constructor for the Quadtree class
+Quadtree::Quadtree(Quadtree const& other) : resolution(other.resolution)
+{
+    copy(root, other.root);
+
+    return;
+}
+
+// ~Quadtree
+//   - parameters: none
+//   - destructor for the Quadtree class
+Quadtree::~Quadtree()
+{
+    clear(root);
+
+    return;
+}
+
+// operator=
+//   - parameters: Quadtree const & other - reference to a const Quadtree
+//                    object, which the current Quadtree will be a copy of
+//   - return value: a const reference to the current Quadtree
+//   - assignment operator for the Quadtree class
+Quadtree const& Quadtree::operator=(Quadtree const& other)
+{
+    if (this != &other) {
+        clear(root);
+        resolution = other.resolution;
+        copy(root, other.root);
+    }
+    return *this;
+}
+
+// copy
+//   - parameters: QuadtreeNode *& firstNode - reference to a pointer to
+//                    the root of a subtree of a Quadtree
+//                 QuadtreeNode * secondNode - pointer to the root of a
+//                    subtree of another Quadtree
+//   - makes the subtree rooted at firstNode a copy of the subtree rooted
+//        at secondNode
+void Quadtree::copy(QuadtreeNode*& firstNode, QuadtreeNode* secondNode)
+{
+    // N.B. we assume here that the "first" tree is empty, i.e. clear() has
+    // already been called.  A more robust solution might attempt to enforce
+    // that within this function.  However, this class is simple enough that
+    // we can just make sure we only call copy() on empty trees.
+
+    // base case -- we've reached the bottom of the second tree
+    if (secondNode == NULL) {
+        firstNode = NULL;
+        return;
+    }
+
+    // otherwise, we need to copy the actual node, and recurse
+    firstNode = new QuadtreeNode(secondNode->element);
+
+    // order of recursion doesn't matter
+    copy(firstNode->neChild, secondNode->neChild);
+    copy(firstNode->nwChild, secondNode->nwChild);
+    copy(firstNode->seChild, secondNode->seChild);
+    copy(firstNode->swChild, secondNode->swChild);
+
+    return;
+}
+
+// clear
+//   - parameters: QuadtreeNode *& firstNode - reference to a pointer to
+//                    the root of a subtree of a Quadtree
+//   - destroys the subtree rooted at curNode, and sets curNode to NULL
+void Quadtree::clear(QuadtreeNode*& curNode)
+{
+    // base case -- nothing to do here
+    if (curNode == NULL)
+        return;
+
+    // otherwise, clear the subtrees, then delete the current node
+    // note -- order is important!  Have to delete the current node _last_.
+    clear(curNode->neChild);
+    clear(curNode->nwChild);
+    clear(curNode->seChild);
+    clear(curNode->swChild);
+
+    delete curNode;
+    curNode = NULL; // technically unnecessary, but it's a good habit
+                    // if you leave this out, you'll have to set some pointers
+                    // to NULL manually elsewhere (e.g. prune())
+
+    return;
+}
+
+// buildTree (public interface)
+//   - parameters: PNG const & source - reference to a const PNG
+//                    object, from which the Quadtree will be built
+//                 int resolution - resolution of the portion of source
+//                    from which this tree will be built
+//   - transforms the current Quadtree into a Quadtree representing
+//        the resolution by resolution block in the upper-left corner of
+//        source
+void Quadtree::buildTree(PNG const& source, int setresolution)
+{
+    clear(root);
+    resolution = setresolution;
+    buildTree(root, source, 0, 0, resolution);
+    return;
+}
+
+// buildTree (private helper)
+//   - parameters: QuadtreeNode *& curNode - reference to a pointer
+//                    to the root of the subtree which we wish to build
+//                 PNG const & source - reference to a const PNG
+//                    object, from which the Quadtree will be built
+//                 int x, int y - coordinates of the top-left corner of
+//                    the portion of the source bitmap which this subtree
+//                    should represent
+//                 int resolution - resolution of the portion of source
+//                    from which this subtree will be built
+//   - creates a subtree, rooted at curNode, which represents the res by res
+//        block of source with top-left coordinates (x, y)
+void Quadtree::buildTree(QuadtreeNode*& curNode, PNG const& source,
+                         int x, int y, int res)
+{
+    // this node represents a single pixel -- base case
+    if (res == 1) {
+        curNode = new QuadtreeNode(*source(x, y));
+        return;
+    }
+
+    // node represents more than just one pixel, time to recurse
+    // make the interior node
+    curNode = new QuadtreeNode();
+
+    // create child subtrees -- order of recursion doesn't matter
+    buildTree(curNode->nwChild, source, x,           y,           res / 2);
+    buildTree(curNode->neChild, source, x + res / 2, y,           res / 2);
+    buildTree(curNode->seChild, source, x + res / 2, y + res / 2, res / 2);
+    buildTree(curNode->swChild, source, x,           y + res / 2, res / 2);
+
+    // fill interior node with the average of its children's elements
+    curNode->setAvgChildren();
+
+    return;
+}
+
+// getPixel (public interface)
+//   - parameters: int x, int y - coordinates of the pixel to be retrieved
+//   - return value: an RGBAPixel representing the desired pixel of the
+//        underlying bitmap
+//   - retrieves and returns the pixel at coordinates (x, y) in the
+//        underlying bitmap
+RGBAPixel Quadtree::getPixel(int x, int y) const
+{
+    if (x < 0 || x > resolution || y < 0 || y > resolution)
+        return RGBAPixel();
+
+    if (root == NULL)
+        return RGBAPixel();
+
+    return getPixel(root, x, y, resolution);
+}
+
+// getPixel (private helper)
+//   - parameters: QuadtreeNode const * curNode - a pointer to the root of
+//                    the subtree in which we're currently searching
+//                 int x, int y - coordinates of the pixel to be retrieved
+//                 int res - resolution of the block of the underlying
+//                    bitmap which this subtree represents
+//   - return value: an RGBAPixel representing the desired pixel of the
+//        underlying bitmap
+//   - retrieves and returns the pixel at coordinates (x, y) in the
+//        underlying bitmap
+// Note: here x and y are the coordinates we're looking for within this
+//    block of the underlying bitmap, not overall
+RGBAPixel const& Quadtree::getPixel(QuadtreeNode const* curNode,
+                                    int x, int y, int res) const
+{
+    // base case
+    // You might expect the base case to be "res == 1"...but since the pixel
+    // we're looking for might not have its own leaf, we'll use something
+    // slightly different.  Essentially, as soon as we hit a leaf, we're done.
+
+    // note: every quadtreenode has zero or four children, so it suffices to
+    // check only one of the child pointers
+    if (curNode->neChild == NULL)
+        return curNode->element;
+
+    // otherwise, we need to recurse into the appropriate subtree
+    // this requires a little thought, to adjust the coordinates
+    if (x >= res / 2)     // east side
+        if (y >= res / 2) // southeast
+            return getPixel(curNode->seChild, x - res / 2, y - res / 2, res / 2);
+        else // northeast
+            return getPixel(curNode->neChild, x - res / 2, y, res / 2);
+    else                  // west side
+        if (y >= res / 2) // southwest
+            return getPixel(curNode->swChild, x, y - res / 2, res / 2);
+        else // northwest
+            return getPixel(curNode->nwChild, x, y, res / 2);
+}
+
+// decompress (public interface)
+//   - parameters: none
+//   - return value: a PNG object representing this quadtree's underlying
+//        bitmap
+//   - constructs and returns this quadtree's underlying bitmap
+PNG Quadtree::decompress() const
+{
+    if (root == NULL)
+        return PNG();
+
+    PNG returnVal;
+    returnVal.resize(resolution, resolution);
+    //	RGBAPixel a;
+    //	for (int y = 0; y < resolution; y++)
+    //		for (int x = 0; x < resolution; x++)
+    //			*returnVal(x, y) = getPixel(x, y);
+    decompress(root, returnVal, 0, 0, resolution);
+
+    return returnVal;
+}
+
+// decompress (private helper)
+//   - parameters: QuadtreeNode const * curNode - pointer to the subtree
+//                    whose picture data we are processing
+//                 PNG & target - reference to the PNG object into which we
+//                    wish to store the picture data
+//                 int x, int y - coordinates of the top-left corner of the
+//                    block of target to which this subtree corresponds
+//                 int res - side length of the block of target to which
+//                    this subtree corresponds
+//   - fills the appropriate portion of target with this subtree's picture
+//        data
+void Quadtree::decompress(QuadtreeNode const* curNode, PNG& target,
+                          int x, int y, int res) const
+{
+    // Note: (x, y) are the coordinates, in the overall image, of the top-left
+    // pixel in the block represented by the current subtree;
+    // res, on the other hand, is the resolution of this block, and _not_
+    // the resolution of the overall image
+
+    // As in getPixel, base case: is this a leaf?
+    if (curNode->neChild == NULL) {
+        for (int i = 0; i < res; i++)
+            for (int j = 0; j < res; j++)
+                *target(x + i, y + j) = curNode->element;
+        return;
+    }
+
+    // recursion time
+    // order of recursion doesn't matter
+    decompress(curNode->neChild, target, x + res / 2, y,           res / 2);
+    decompress(curNode->nwChild, target, x,           y,           res / 2);
+    decompress(curNode->swChild, target, x,           y + res / 2, res / 2);
+    decompress(curNode->seChild, target, x + res / 2, y + res / 2, res / 2);
+
+    return;
+}
+
+// maxDev
+//   - parameters: RGBAPixel const & target - a reference to an RGBAPixel
+//                    to which we wish to compute the "distance"
+//                 QuadtreeNode const * curNode - a pointer to the root of
+//                    the subtree currently under consideration
+//   - returns the maximum distance between target and all leaves in the
+//        subtree rooted at curNode; the "distance" between two pixels
+//        is the sum of the squares of the differences in the components
+int Quadtree::maxDev(RGBAPixel const& target, QuadtreeNode const* curNode) const
+{
+    // base case: curNode is a leaf
+    // As always, we only need to check one child
+    // N.B. we will avoid calling this function with curNode == NULL;
+    // a more robust implementation might check explicitly
+    if (curNode->neChild == NULL) {
+        RGBAPixel current = curNode->element; // just to clean up syntax
+        // return distance between target and current
+        return ((current.red - target.red) * (current.red - target.red)
+                + (current.green - target.green) * (current.green - target.green)
+                + (current.blue - target.blue) * (current.blue - target.blue));
+    }
+
+    // otherwise...recurse!
+    int devNE, devNW, devSE, devSW;
+    devNE = maxDev(target, curNode->neChild);
+    devNW = maxDev(target, curNode->nwChild);
+    devSE = maxDev(target, curNode->seChild);
+    devSW = maxDev(target, curNode->swChild);
+
+    // find the largest of the four deviations
+    int max = devNE;
+    if (devNW > max)
+        max = devNW;
+    if (devSE > max)
+        max = devSE;
+    if (devSW > max)
+        max = devSW;
+
+    return max;
+}
+
+// QuadtreeNode
+//   - parameters: none
+//   - constructor for the QuadtreeNode class; creates an empty
+//        QuadtreeNode, with all child pointers NULL
+Quadtree::QuadtreeNode::QuadtreeNode()
+{
+    neChild = seChild = nwChild = swChild = NULL;
+}
+
+// QuadtreeNode
+//   - parameters: RGBAPixel const & elem - reference to a const
+//        RGBAPixel which we want to store in this node
+//   - constructor for the QuadtreeNode class; creates a QuadtreeNode
+//        with element elem and all child pointers NULL
+Quadtree::QuadtreeNode::QuadtreeNode(RGBAPixel const& elem)
+{
+    element = elem;
+    neChild = seChild = nwChild = swChild = NULL;
+}
+
+// setAvgChildren
+//   - parameters: none
+//   - sets the element field of this QuadtreeNode to be the average
+//     of the element fields of its children
+void Quadtree::QuadtreeNode::setAvgChildren()
+{
+    // if this node is a leaf, the call doesn't make any sense
+    if (nwChild == NULL)
+        return;
+
+    element.red = (nwChild->element.red + neChild->element.red
+                   + seChild->element.red + swChild->element.red)
+                  / 4;
+    element.green = (nwChild->element.green + neChild->element.green
+                     + seChild->element.green + swChild->element.green)
+                    / 4;
+    element.blue = (nwChild->element.blue + neChild->element.blue
+                    + seChild->element.blue + swChild->element.blue)
+                   / 4;
+}
+
+
+=== Grade Feedback for Problem "programming_stlmap_dictlookup_palindromePermutation" ===
+[0/30]: Test: Test Suite #1 (Given Tests)
+[0/30]: Test: Test Suite #2 (Given Tests)
+[0/20]: Test: Test Suite #3
+[0/20]: Test: Test Suite #4
+=====
+[0/100]
+
+--- stdout ---
+sed -i.bak 's/int main() {/int notmain() {/' main-p1.cpp
+g++ main-catch.cpp -std=c++1y -g -O0 -Wall -Wextra -pedantic -o main
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Test Suite #1 (Given Tests)
+-------------------------------------------------------------------------------
+main-catch.cpp:19
+...............................................................................
+
+main-catch.cpp:22: FAILED:
+  CHECK( isPalindromePermutation("civil") == false )
+with expansion:
+  true == false
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Test Suite #2 (Given Tests)
+-------------------------------------------------------------------------------
+main-catch.cpp:25
+...............................................................................
+
+main-catch.cpp:26: FAILED:
+  CHECK( isPalindromePermutation("livci") == false )
+with expansion:
+  true == false
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 2 | 1 passed | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Test Suite #3
+-------------------------------------------------------------------------------
+main-catch.cpp:30
+...............................................................................
+
+main-catch.cpp:33: FAILED:
+  CHECK( isPalindromePermutation("notapalindrome") == false )
+with expansion:
+  true == false
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Test Suite #4
+-------------------------------------------------------------------------------
+main-catch.cpp:36
+...............................................................................
+
+main-catch.cpp:39: FAILED:
+  CHECK( isPalindromePermutation("car") == false )
+with expansion:
+  true == false
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Test Suite #1 (Given Tests)
+-------------------------------------------------------------------------------
+main-catch.cpp:19
+...............................................................................
+
+main-catch.cpp:22: FAILED:
+  CHECK( isPalindromePermutation("civil") == false )
+with expansion:
+  true == false
+
+-------------------------------------------------------------------------------
+Test Suite #2 (Given Tests)
+-------------------------------------------------------------------------------
+main-catch.cpp:25
+...............................................................................
+
+main-catch.cpp:26: FAILED:
+  CHECK( isPalindromePermutation("livci") == false )
+with expansion:
+  true == false
+
+-------------------------------------------------------------------------------
+Test Suite #3
+-------------------------------------------------------------------------------
+main-catch.cpp:30
+...............................................................................
+
+main-catch.cpp:33: FAILED:
+  CHECK( isPalindromePermutation("notapalindrome") == false )
+with expansion:
+  true == false
+
+-------------------------------------------------------------------------------
+Test Suite #4
+-------------------------------------------------------------------------------
+main-catch.cpp:36
+...............................................................................
+
+main-catch.cpp:39: FAILED:
+  CHECK( isPalindromePermutation("car") == false )
+with expansion:
+  true == false
+
+===============================================================================
+test cases:  4 | 4 failed
+assertions: 11 | 7 passed | 4 failed
+
+
+
+--- stderr ---
+
+
+--- submitted file: main-p1.cpp ---
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <map>
+#include "errorprint.h"
+
+using namespace std;
+
+
+/**
+ * bool isPalindromePermutation(string s);
+ * - Returns `true` if there exists a permutation of `s` that is a palindrome
+ */
+bool isPalindromePermutation(string s) {
+  int m1[256] = {0};
+  int m2[256] = {0};
+  for(size_t i = 0; i<s.length(); i++){
+    m1[i] = s[i];
+  }
+  for(size_t i = s.length(); i > 0; i--){
+    m2[i] = s[i];
+  }
+  for(size_t i = 0; i < s.length(); i++){
+    if(m1[i] == m2[i])
+      return true;}
+
+    return false;
+}
+
+
+/**
+ * int main();
+ * - Basic test cases for the followsPattern function
+ */
+int main() {
+  bool r;
+
+  r = isPalindromePermutation("civic");
+  if (r) { print_pass("\"civic\" is a palindrome permutation"); }
+  else   { print_fail("\"civic\" is a palindrome permutation, but your function returned false"); }
+
+  r = isPalindromePermutation("ivicc");
+  if (r) { print_pass("\"ivicc\" is a palindrome permutation"); }
+  else   { print_fail("\"ivicc\" is a palindrome permutation, but your function returned false"); }
+
+  r = isPalindromePermutation("civil");
+  if (!r) { print_pass("\"civil\" is not a palindrome permutation"); }
+  else    { print_fail("\"civil\" is not a palindrome permutation, but your function returned true"); }
+
+  r = isPalindromePermutation("livci");
+  if (!r) { print_pass("\"livci\" is not a palindrome permutation"); }
+  else    { print_fail("\"livci\" is not a palindrome permutation, but your function returned true"); }
+
+  r = isPalindromePermutation("qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm");
+  if (r) { print_pass("\"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm\" is a palindrome permutation"); }
+  else   { print_fail("\"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm\" is a palindrome permutation, but your function returned false"); }
+
+  return 0;
+}
+
+
