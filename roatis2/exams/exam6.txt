@@ -1,0 +1,198 @@
+Exam #6 score (roatis2): 20/200
+
+=== Grade Feedback for Problem "programming_mtreeToBinaryTree" ===
+[20/20]: Test: Simple Tree Test (height=1, m=2)
+[0/20]: Test: Complex Tree Test (height=2, m=5)
+     Message: SIGSEGV
+[0/60]: Test: Exam-provided Test
+     Message: SIGSEGV
+=====
+[20/100]
+
+--- stdout ---
+g++ main.cpp tree.cpp -std=c++1y -g -O0 -Wall -Wextra -pedantic -o main
+===============================================================================
+All tests passed (6 assertions in 1 test case)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Complex Tree Test (height=2, m=5)
+-------------------------------------------------------------------------------
+main.cpp:45
+...............................................................................
+
+main.cpp:78: FAILED:
+  CHECK( root->left->left != __null )
+with expansion:
+  NULL != 0
+with messages:
+  Checking if the root of the tree is still "1" (NULL check then value check)
+  Checking ["1"]->left (NULL check then value check)
+  Checking ["1"]->left->left (NULL check then value check)
+
+main.cpp:45: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 6 | 4 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Exam-provided Test
+-------------------------------------------------------------------------------
+main.cpp:99
+...............................................................................
+
+main.cpp:142: FAILED:
+  CHECK( root->left->left != __null )
+with expansion:
+  NULL != 0
+with messages:
+  Checking if the root of the tree is still "A" (NULL check then value check)
+  Checking if [A]->left is "B" (NULL check then value check)
+  Checking if [A]->right is NULL
+  Checking if [A]->left->left is "E" (NULL check then value check)
+
+main.cpp:99: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 7 | 5 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Complex Tree Test (height=2, m=5)
+-------------------------------------------------------------------------------
+main.cpp:45
+...............................................................................
+
+main.cpp:78: FAILED:
+  CHECK( root->left->left != __null )
+with expansion:
+  NULL != 0
+with messages:
+  Checking if the root of the tree is still "1" (NULL check then value check)
+  Checking ["1"]->left (NULL check then value check)
+  Checking ["1"]->left->left (NULL check then value check)
+
+main.cpp:45: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+===============================================================================
+test cases:  2 |  1 passed | 1 failed
+assertions: 12 | 10 passed | 2 failed
+
+
+
+--- stderr ---
+
+
+--- submitted file: tree.cpp ---
+#define _TREE_CPP
+#include <iostream>
+#include <vector>
+#include "tree.h"
+
+
+template <class T>
+void Tree<T>::transformToBinary() {
+  // ...your code here...
+  transformToBinaryR(root, root->children, 1);
+}
+
+
+template <class T>
+void Tree<T>::insert(T &val, vector<int> location) {
+  TreeNode *node = new TreeNode(val);
+
+  if (root == NULL) {
+    // add root:
+    root = node;
+  } else {
+     // Otherwise, find the node specified by the location vector:
+    TreeNode *loc = root;
+    for (int i = 0; i < location.size(); i++) {
+      loc = loc->children[ location[i] ];
+    }
+    loc->children.push_back(node);
+  }
+}
+
+template <class T>
+void Tree<T>::transformToBinaryR( TreeNode *node, vector<TreeNode *>siblingList, int nextSiblingIndex ){
+  if(node == NULL)
+    return;
+
+  if(siblingList[0]!=NULL){
+    node->left = siblingList[0];
+    //transformToBinaryR(siblingList[0], siblingList[0]->children, 2);
+    }
+  else
+    node->left = NULL;
+  if(siblingList[nextSiblingIndex] != NULL){
+    node->left->right = siblingList[nextSiblingIndex];
+    //transformToBinaryR(siblingList[nextSiblingIndex], siblingList[nextSiblingIndex]->children, 2);
+  }
+  else
+    node->left->right = NULL;
+}
+
+--- submitted file: tree.h ---
+#ifndef _TREE_H
+#define _TREE_H
+
+#include <vector>
+using namespace std;
+
+template <class T>
+class Tree {
+public:
+  class TreeNode {
+  public:
+    TreeNode(T &val) : val(val), left(NULL), right(NULL) { };
+    T &val;
+
+    /* n-tree children: */
+    vector<TreeNode *> children;
+
+    /* binary tree children: */
+    TreeNode *left;
+    TreeNode *right;
+  };
+
+  Tree() : root(NULL) {};
+  TreeNode *root;
+
+  void insert(T &val, vector<int> location);
+  void transformToBinary();
+
+  void transformToBinaryR( TreeNode *node, vector<TreeNode *>siblingList, int nextSiblingIndex );
+};
+
+#ifndef _TREE_CPP
+#include "tree.cpp"
+#endif
+
+#endif
+
+
