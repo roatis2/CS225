@@ -1,0 +1,356 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>roatis2's feedback report for exam1</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Create a &quot;cube&quot; class</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&quot;X-Ray&quot; an Image</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">3</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">6</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Create a &quot;cube&quot; class&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="theproblem">The Problem</h4>
+<p>In lecture, we developed a <code>sphere</code> class in C++. In this problem, you will develop a <code>cube</code> class.</p>
+<p>The <code>cube</code> class must:</p>
+<ul>
+<li>Store a variable d (stored as a double), which represents the length of one edge of the cube.</li>
+<li>Have a default constructor that sets the length of the edge of the cube to <code>1.0</code>.</li>
+<li>Have a second constructor that takes one parameter: the length of one edge of the cube</li>
+<li>Have a getVolume function that takes no parameters and returns the volume of the cube (as a double):</li>
+<li>The volume of the cube can be calculated by: <code>d * d * d</code></li>
+<li>The outline of the cube class is provided for you in <code>cube.cpp</code> and <code>cube.h</code>. To complete this problem, you must complete the <code>cube</code> class as described above. You should assume all input values will be valid.</li>
+</ul>
+<p>To help you test your code, we have provided test cases in <code>main.cpp</code>. To test your code, run the following commands:</p>
+<pre><code>make
+./cube-tester
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      cube.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;cube.h&quot;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+cube::cube(double d)
+{
+        double d &#x3D; 1.0;
+}
+
+double cube::getVolume()
+{
+	double volume &#x3D; d*d*d;
+	return volume;	
+};
+//
+// The cube class must:
+//
+// - Store a variable d (stored as a double), which represents the length of
+//   one edge of the cube.
+//
+// - Have a default constructor that sets the length of the edge of the cube
+//   to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the cube
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the cube (as a double):
+//   - The volume of the cube can be calculated by: d * d * d
+//
+</pre>
+    </div>
+    <div>
+      cube.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _CUBE_H
+#define _CUBE_H
+
+using namespace std;
+
+class cube
+{
+	public:
+
+	double d;
+
+	cube();
+	
+	cube(double d);
+
+	double getVolume();
+
+};
+	
+
+	
+//
+// The cube class must:
+//
+// - Store a variable d (stored as a double), which represents the length of
+//   one edge of the cube.
+//
+// - Have a default constructor that sets the length of the edge of the cube
+//   to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the cube
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the cube (as a double):
+//   - The volume of the cube can be calculated by: d * d * d
+//
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>default constructor</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>one parameter constructor</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>use of type double</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ -g -O0 -Wall -Wextra main.cpp cube.cpp -o cube-tester
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>cube.cpp: In constructor ‘cube::cube(double)’:
+cube.cpp:8:16: error: declaration of ‘double d’ shadows a parameter
+         double d &#x3D; 1.0;
+                ^
+cube.cpp:8:16: warning: unused variable ‘d’ [-Wunused-variable]
+cube.cpp: At global scope:
+cube.cpp:6:1: warning: unused parameter ‘d’ [-Wunused-parameter]
+ cube::cube(double d)
+ ^
+make: *** [cube-tester] Error 1
+</pre>
+  </div>
+  <hr>
+  <h4>&quot;&quot;X-Ray&quot; an Image&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="theproblem">The Problem</h4>
+<p>Similar to lab_intro and MP1, in this problem you will manipulated an image using <code>RGBAPixel</code> and <code>PNG</code> classes. In this problem, you will "X-Ray" the image.</p>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      main.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+
+#include &quot;rgbapixel.h&quot;
+#include &quot;png.h&quot;
+
+using namespace std;
+
+PNG transform_xray(PNG original) {
+	//
+	
+   int r, g, b; //to temporarily hold values in an array
+	for (j&gt;0; j&lt;original.height; j++;)
+	   {	   
+		for(i&gt;0; i&lt;original.width; i++)
+		{
+		   
+
+
+// To &quot;X-Ray&quot; an image, you must:
+	// - Invert every color component (red, green, and blue) of every pixel.
+	// - To invert the color component: subtract the value of the color
+	//   component from 255.  For example:
+	//   * An original value of 100 has an inverted value of 155
+	//     (since 255 - 100 &#x3D; 155).
+	//   * An original value of 210 has an inverted value of 45
+	//     (since 255 - 210 &#x3D; 45).
+	//   * An original value of 55 has an inverted value of 200
+	//     (since 255 - 55 &#x3D; 200).
+	//   * etc..
+	//
+
+}
+
+int main() {
+	PNG image(&quot;in.png&quot;);
+	image &#x3D; transform_xray(image);
+	image.writeToFile(&quot;out.png&quot;);
+	return 0;
+}
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>in_1.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>in_2.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>in_3.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic main.cpp
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>main.cpp: In function ‘PNG transform_xray(PNG)’:
+main.cpp:13:7: error: ‘j’ was not declared in this scope
+  for (j&gt;0; j&lt;original.height; j++;)
+       ^
+main.cpp:13:34: error: expected ‘)’ before ‘;’ token
+  for (j&gt;0; j&lt;original.height; j++;)
+                                  ^
+main.cpp:13:35: error: expected primary-expression before ‘)’ token
+  for (j&gt;0; j&lt;original.height; j++;)
+                                   ^
+main.cpp:13:35: error: expected ‘;’ before ‘)’ token
+main.cpp:12:8: warning: unused variable ‘r’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+        ^
+main.cpp:12:11: warning: unused variable ‘g’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+           ^
+main.cpp:12:14: warning: unused variable ‘b’ [-Wunused-variable]
+    int r, g, b; //to temporarily hold values in an array
+              ^
+main.cpp:40:1: error: expected ‘}’ at end of input
+ }
+ ^
+main.cpp:40:1: warning: no return statement in function returning non-void [-Wreturn-type]
+make: *** [main.o] Error 1
+</pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

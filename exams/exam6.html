@@ -1,0 +1,338 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>roatis2's feedback report for exam6</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Transformation to a Binary Tree</td>
+      <td style="text-align: right;">20</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">20</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td>20.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Transformation to a Binary Tree&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="algorithmoverview">Algorithm Overview</h4>
+<p>Trees with more than two child nodes can be transformed to a binary tree using a
+clever (but simple) algorithm.  For every node in the non-binary tree, the
+binary tree transformation is as follows:</p>
+<ul>
+<li>The left child of the node as a binary tree is the first child of the node in the original tree</li>
+<li>The right child of the node as a binary tree is the next order-level sibling of the node in the original tree</li>
+</ul>
+<h4 id="algorithmexample">Algorithm Example</h4>
+<p>Consider the following non-binary tree:</p>
+<p><img src="file/3tree_3layout.png"></p>
+<p>Transforming the tree to a binary tree results in the following edges:</p>
+<p><img src="file/3tree_2layout.png"></p>
+<p>Equivalently, the tree can be drawn in a format that is standard for drawing binary tree:</p>
+<p><img src="file/2tree_2layout.png">
+<img src="file/2tree_3layout.png"></p>
+<p><em>Even though a 3-tree is shown here, this algorithm works for any n-tree.</em></p>
+<h4 id="coding">Coding</h4>
+<p>Implement the <code>transformToBinary</code> member function of the <code>Tree</code> class in <code>tree.cpp</code>.</p>
+<p>When <code>transformToBinary</code> is called, the <code>Tree</code> is an n-tree where <code>TreeNode</code>'s
+child nodes are stored in the vector <code>children</code>.  When the function returns,
+each <code>TreeNode</code> must have their <code>left</code> and <code>right</code> pointers set that creates
+the binary tree described above.</p>
+<p>Feel free to add any helper functions to <code>tree.cpp</code> and <code>tree.h</code>.</p>
+<h4 id="potentiallyusefulreferences">Potentially Useful References</h4>
+<ul>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/vector.html">stl::vector documentation</a></li>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/stack.html">stl::stack documentation</a></li>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/queue.html">stl::queue documentation</a></li>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/map.html">stl::map documentation</a></li>
+</ul>
+<h4 id="testing">Testing</h4>
+<p>A <code>Makefile</code> has been provided that compiles a simple testing suite provided
+in <code>main.cpp</code>.  To run:</p>
+<pre><code>make
+./main
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      tree.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#define _TREE_CPP
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &quot;tree.h&quot;
+
+
+template &lt;class T&gt;
+void Tree&lt;T&gt;::transformToBinary() {
+  // ...your code here...
+  transformToBinaryR(root, root-&gt;children, 1);
+}
+
+
+template &lt;class T&gt;
+void Tree&lt;T&gt;::insert(T &amp;val, vector&lt;int&gt; location) {
+  TreeNode *node &#x3D; new TreeNode(val);
+
+  if (root &#x3D;&#x3D; NULL) {
+    // add root:
+    root &#x3D; node;
+  } else {
+     // Otherwise, find the node specified by the location vector:
+    TreeNode *loc &#x3D; root;
+    for (int i &#x3D; 0; i &lt; location.size(); i++) {
+      loc &#x3D; loc-&gt;children[ location[i] ];
+    }
+    loc-&gt;children.push_back(node);
+  }
+}
+
+template &lt;class T&gt;
+void Tree&lt;T&gt;::transformToBinaryR( TreeNode *node, vector&lt;TreeNode *&gt;siblingList, int nextSiblingIndex ){
+  if(node &#x3D;&#x3D; NULL)
+    return;
+
+  if(siblingList[0]!&#x3D;NULL){
+    node-&gt;left &#x3D; siblingList[0];
+    //transformToBinaryR(siblingList[0], siblingList[0]-&gt;children, 2);
+    }
+  else
+    node-&gt;left &#x3D; NULL;
+  if(siblingList[nextSiblingIndex] !&#x3D; NULL){
+    node-&gt;left-&gt;right &#x3D; siblingList[nextSiblingIndex];
+    //transformToBinaryR(siblingList[nextSiblingIndex], siblingList[nextSiblingIndex]-&gt;children, 2);
+  }
+  else
+    node-&gt;left-&gt;right &#x3D; NULL;
+}
+</pre>
+    </div>
+    <div>
+      tree.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _TREE_H
+#define _TREE_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+template &lt;class T&gt;
+class Tree {
+public:
+  class TreeNode {
+  public:
+    TreeNode(T &amp;val) : val(val), left(NULL), right(NULL) { };
+    T &amp;val;
+
+    /* n-tree children: */
+    vector&lt;TreeNode *&gt; children;
+
+    /* binary tree children: */
+    TreeNode *left;
+    TreeNode *right;
+  };
+
+  Tree() : root(NULL) {};
+  TreeNode *root;
+
+  void insert(T &amp;val, vector&lt;int&gt; location);
+  void transformToBinary();
+
+  void transformToBinaryR( TreeNode *node, vector&lt;TreeNode *&gt;siblingList, int nextSiblingIndex );
+};
+
+#ifndef _TREE_CPP
+#include &quot;tree.cpp&quot;
+#endif
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>Simple Tree Test (height&#x3D;1, m&#x3D;2)</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Complex Tree Test (height&#x3D;2, m&#x3D;5)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Exam-provided Test</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">60</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ main.cpp tree.cpp -std&#x3D;c++1y -g -O0 -Wall -Wextra -pedantic -o main
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (6 assertions in 1 test case)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Complex Tree Test (height&#x3D;2, m&#x3D;5)
+-------------------------------------------------------------------------------
+main.cpp:45
+...............................................................................
+
+main.cpp:78: FAILED:
+  CHECK( root-&gt;left-&gt;left !&#x3D; __null )
+with expansion:
+  NULL !&#x3D; 0
+with messages:
+  Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)
+  Checking [&quot;1&quot;]-&gt;left (NULL check then value check)
+  Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)
+
+main.cpp:45: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 6 | 4 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Exam-provided Test
+-------------------------------------------------------------------------------
+main.cpp:99
+...............................................................................
+
+main.cpp:142: FAILED:
+  CHECK( root-&gt;left-&gt;left !&#x3D; __null )
+with expansion:
+  NULL !&#x3D; 0
+with messages:
+  Checking if the root of the tree is still &quot;A&quot; (NULL check then value check)
+  Checking if [A]-&gt;left is &quot;B&quot; (NULL check then value check)
+  Checking if [A]-&gt;right is NULL
+  Checking if [A]-&gt;left-&gt;left is &quot;E&quot; (NULL check then value check)
+
+main.cpp:99: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 7 | 5 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Complex Tree Test (height&#x3D;2, m&#x3D;5)
+-------------------------------------------------------------------------------
+main.cpp:45
+...............................................................................
+
+main.cpp:78: FAILED:
+  CHECK( root-&gt;left-&gt;left !&#x3D; __null )
+with expansion:
+  NULL !&#x3D; 0
+with messages:
+  Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)
+  Checking [&quot;1&quot;]-&gt;left (NULL check then value check)
+  Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)
+
+main.cpp:45: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases:  2 |  1 passed | 1 failed
+assertions: 12 | 10 passed | 2 failed
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>roatis2's feedback report for exam3</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Meat and Veggies</td>
+      <td style="text-align: right;">22</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Game Night Leaders</td>
+      <td style="text-align: right;">100</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">122</td>
+      <td>/</td>
+      <td style="text-align: right;">200</td>
+      <td>61.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Meat and Veggies&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="thesetup">The Setup</h4>
+<p>Consider a eatery where meals are brought out one-by-one (similar to dim sum,
+except each cart only has a single meal).  Each meal is represented by the
+class <code>Meal</code> and a pointer to each meal, a <code>Meal *</code>, is stored within a node
+of a singly linked list.</p>
+<p>Some meals contains only meat, some contain only vegetables, and some contain
+both meat and vegetables.  Each diner will select the first meal that matches
+their eating preference.</p>
+<h4 id="theproblem">The Problem</h4>
+<p>In the <code>List</code> class, complete the <code>chooseMeal</code> member function in <code>list.cpp</code>.
+The <code>chooseMeal</code> function must:</p>
+<ol>
+<li>find the meal closest to the head of the list that meets the given
+preferences (if a suitable meal exists),</li>
+<li>remove the node containing the meal from the list, and</li>
+<li>return a pointer to the meal (if a suitable meal was found) <strong>or</strong> <code>NULL</code> if no meal was found</li>
+</ol>
+<h4 id="reference">Reference</h4>
+<p>The <code>List</code> class (<code>list.cpp</code>, <code>list.h</code>) stores a singly linked list of <code>ListNode</code>
+nodes, using the same structure and variable names as MP3.</p>
+<p>The <code>Meal</code> class has a member functions <code>containsMeat()</code> and <code>containsVegetables()</code>
+that returned a <code>bool</code> based on if the meal contains meat and/or vegetables.</p>
+<h4 id="compileandtest">Compile and Test</h4>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./eatery-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      list.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#define _LIST_CPP
+#include &quot;list.h&quot;
+#include &quot;meal.h&quot;
+
+#include &lt;cstddef&gt;
+
+#include &lt;iostream&gt;
+using namespace std;
+
+
+//
+// In the &#x60;List&#x60; class, complete the &#x60;chooseMeal&#x60; member function in &#x60;list.cpp&#x60;.
+// The &#x60;grabFood&#x60; function must:
+//
+// 1. find the meal closest to the head of the list that meets the given
+//    preferences (if a suitable meal exists),
+// 2. remove the node containing the meal from the list, and
+// 3. return a pointer to the meal (if a suitable meal was found) **or** &#x60;NULL&#x60; if no meal was found
+//
+
+template &lt;class T&gt;
+const Meal *List&lt;T&gt;::chooseMeal(bool requireMeat, bool requireVegetables) {
+  /*ListNode * current &#x3D; head;
+    while(current !&#x3D; NULL){
+      if(*Meal-&gt;containsMeat &#x3D;&#x3D; requireMeat &amp;&amp; *Meal-&gt;containsVegetables &#x3D;&#x3D; requireVegetables){
+        return *Meal;
+      }
+
+      else{
+        current &#x3D; current-&gt;next;
+      }
+    }
+
+    if(current &#x3D;&#x3D; NULL){
+      return NULL;
+    }*/
+
+    return NULL;
+}
+
+
+
+
+template &lt;class T&gt;
+List&lt;T&gt;::List() {
+  this-&gt;head &#x3D; NULL;
+}
+
+template &lt;class T&gt;
+void List&lt;T&gt;::insertFront(const T&amp; ndata) {
+  ListNode* node &#x3D; new ListNode(ndata);
+  node-&gt;next &#x3D; head;
+  this-&gt;head &#x3D; node;
+}
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>Empty list returns NULL</td>
+        <td style="text-align: right;">6</td>
+        <td>/</td>
+        <td style="text-align: right;">6</td>
+      </tr>
+      <tr>
+        <td>List of 1 veggie meal returns NULL when requesting a meat meal</td>
+        <td style="text-align: right;">4</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>List of multiple veggie meals returns NULL when requesting a meat meal</td>
+        <td style="text-align: right;">4</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>List of 1 meat meals returns NULL when requesting a veggie meal</td>
+        <td style="text-align: right;">4</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>List of multiple meat meals returns NULL when requesting a veggie meal</td>
+        <td style="text-align: right;">4</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>Removing the only element in the list (reference check)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>Removing from a one-element list (value check)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">4</td>
+      </tr>
+      <tr>
+        <td>Full exam-provided example (reference)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Full exam-provided example (value)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">50</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">22</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ meal.cpp list.cpp eatery-test.cpp -std&#x3D;c++1y -lpng -lpthread -g -o eatery-test
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eatery-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Removing the only element in the list (reference check)
+-------------------------------------------------------------------------------
+eatery-test.cpp:86
+...............................................................................
+
+eatery-test.cpp:96: FAILED:
+  CHECK( m &#x3D;&#x3D; m1 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x0000000001febc30
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 2 | 1 passed | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eatery-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Removing from a one-element list (value check)
+-------------------------------------------------------------------------------
+eatery-test.cpp:102
+...............................................................................
+
+eatery-test.cpp:102: FAILED:
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eatery-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Full exam-provided example (reference)
+-------------------------------------------------------------------------------
+eatery-test.cpp:120
+...............................................................................
+
+eatery-test.cpp:136: FAILED:
+  CHECK( m &#x3D;&#x3D; m2 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000219dcd0
+
+eatery-test.cpp:139: FAILED:
+  CHECK( m &#x3D;&#x3D; m4 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000219f2f0
+
+eatery-test.cpp:145: FAILED:
+  CHECK( m &#x3D;&#x3D; m1 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000219ec30
+
+eatery-test.cpp:151: FAILED:
+  CHECK( m &#x3D;&#x3D; m3 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x00000000021a0790
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 6 | 2 passed | 4 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eatery-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Full exam-provided example (value)
+-------------------------------------------------------------------------------
+eatery-test.cpp:155
+...............................................................................
+
+eatery-test.cpp:155: FAILED:
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eatery-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Removing the only element in the list (reference check)
+-------------------------------------------------------------------------------
+eatery-test.cpp:86
+...............................................................................
+
+eatery-test.cpp:96: FAILED:
+  CHECK( m &#x3D;&#x3D; m1 )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000156c080
+
+-------------------------------------------------------------------------------
+Removing from a one-element list (value check)
+-------------------------------------------------------------------------------
+eatery-test.cpp:102
+...............................................................................
+
+eatery-test.cpp:102: FAILED:
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 7 | 5 passed | 2 failed
+assertions: 8 | 6 passed | 2 failed
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+  <h4>&quot;Game Night Leaders&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="thesetup">The Setup</h4>
+<p>Consider a game night for students, where each student is added to a end of a
+linked list in the order they arrive to the game night.  To help organize the
+games, every other student is a leader.  For example:</p>
+<pre><code>1st     -&gt;  2nd  -&gt;  3rd    -&gt;  4th  -&gt; 5th     -&gt; 6th    -&gt;  ...
+Alice   -&gt;  Bob  -&gt;  Carol  -&gt;  Don  -&gt; Erin    -&gt; Faythe -&gt;  ...
+[Leader]             [Leader]           [Leader]
+</code></pre>
+<h4 id="theproblem">The Problem</h4>
+<p>In the <code>List</code> class, complete the <code>reorganizeList</code> member function in <code>list-p2.cpp</code>.
+The <code>reorganizeList</code> function must place all leaders at the front of the list
+followed by all non-leaders, while otherwise maintaining the same order.</p>
+<p>Using the example above, the new list must be the following:</p>
+<pre><code>1st     -&gt; 3rd     -&gt; 5th    -&gt; 2nd  -&gt; 4th  -&gt; 6th    -&gt;  ...
+Alice   -&gt; Carol   -&gt; Erin   -&gt; Bob  -&gt; Don  -&gt; Faythe -&gt;  ...
+[Leader]   [Leader]   [Leader]
+</code></pre>
+<h4 id="reference">Reference</h4>
+<p>The <code>List</code> class (<code>list-p2.cpp</code>, <code>list.h</code>) stores a singly linked list of <code>ListNode</code>
+nodes, using the same structure and variable names as MP3.</p>
+<p>The <code>ListNode</code> class contains a <code>bool leader</code> that will be set to <code>true</code> when
+that entry contains a leader.</p>
+<h4 id="compileandtest">Compile and Test</h4>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./gameNight-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      list-p2.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#define _LIST_CPP
+#include &quot;list.h&quot;
+#include &quot;person.h&quot;
+
+#include &lt;cstddef&gt;
+
+
+//
+// In the &#x60;List&#x60; class, complete the &#x60;reorganizeList&#x60; member function in
+// &#x60;list.cpp&#x60;.  The &#x60;reorganizeList&#x60; function must place all leaders at the
+// front of the list followed by all non-leaders, while otherwise maintain
+// the same order.
+//
+
+template &lt;class T&gt;
+void List&lt;T&gt;::reorganizeList() {
+
+  ListNode * current &#x3D; head;
+  ListNode * move &#x3D; current-&gt;next;
+  ListNode * newHead &#x3D; head;
+
+  while(move !&#x3D; NULL){
+      if(move-&gt;leader &#x3D;&#x3D; true){
+        current-&gt;next &#x3D; move-&gt;next;
+        move-&gt;next &#x3D; newHead-&gt;next;
+        newHead-&gt;next &#x3D; move;
+        newHead &#x3D; newHead-&gt;next;
+        current &#x3D; current-&gt;next;
+        move &#x3D; current-&gt;next;
+      }
+      else{
+        current &#x3D; move;
+        move &#x3D; move-&gt;next;
+      }
+  }
+}
+
+template &lt;class T&gt;
+List&lt;T&gt;::List() {
+  this-&gt;head &#x3D; NULL;
+}
+
+template &lt;class T&gt;
+void List&lt;T&gt;::insertBack(const T&amp; ndata) {
+  static int ct &#x3D; 0;
+
+  ListNode* node &#x3D; new ListNode(ndata);
+  node-&gt;leader &#x3D; (ct++ % 2 &#x3D;&#x3D; 0);
+
+  if (!head) {
+    head &#x3D; node;
+  } else {
+    ListNode *thru &#x3D; head;
+    while (thru-&gt;next !&#x3D; NULL) { thru &#x3D; thru-&gt;next; }
+    thru-&gt;next &#x3D; node;
+  }
+}
+
+template &lt;class T&gt;
+const T *List&lt;T&gt;::get(int index) const {
+  ListNode *thru &#x3D; head;
+  while (thru &amp;&amp; index-- &gt; 0) { thru &#x3D; thru-&gt;next; }
+
+  if (thru) { return &amp;(thru-&gt;data); }
+  else      { return NULL; }
+}
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>List of six people (by ref)</td>
+        <td style="text-align: right;">30</td>
+        <td>/</td>
+        <td style="text-align: right;">30</td>
+      </tr>
+      <tr>
+        <td>List of six people (by value)</td>
+        <td style="text-align: right;">70</td>
+        <td>/</td>
+        <td style="text-align: right;">70</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">100</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ gameNight-test.cpp list-p2.cpp person.cpp -std&#x3D;c++1y -lpng -lpthread -g -o gameNight-test
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (6 assertions in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (6 assertions in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (12 assertions in 2 test cases)
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

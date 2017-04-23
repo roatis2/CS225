@@ -1,0 +1,574 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>roatis2's feedback report for exam4</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Leaf nodes in a binary tree</td>
+      <td style="text-align: right;">100</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Game Night Leaders</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">100</td>
+      <td>/</td>
+      <td style="text-align: right;">200</td>
+      <td>50.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Leaf nodes in a binary tree&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="theproblem">The Problem</h4>
+<p>In the <code>BinaryTree</code> class in <code>binarytree.cpp</code>, complete the member
+function <code>countLeafNodes()</code> that returns the number of leaf nodes
+within the tree.</p>
+<p>Feel free to write any helper functions that you may need within the <code>BinaryTree</code>
+class.  However, you must not modify the parameters of the functions provided.</p>
+<p><em>The <code>BinaryTree</code> class used here is the same <code>BinaryTree</code> class used in lab_trees,
+with functions that are not used removed for simplicity.</em></p>
+<h4 id="examples">Examples</h4>
+<pre><code>  4       &lt;-- countLeafNodes() returns 2,
+ / \            since there are two leaf nodes in the tree
+3   3
+</code></pre>
+<pre><code>  1        &lt;-- countLeafNodes() returns 2,
+ / \             since there are two leaf nodes in the tree
+1   1
+     \
+      1
+</code></pre>
+<h4 id="compileandtest">Compile and Test</h4>
+<p>A complete Makefile and a <code>main.cpp</code> file containing some simple tests have
+been provided for you.  To compile and run the simple tests, run:</p>
+<pre><code>make
+./binarytree-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      binarytree.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#define _BINARYTREE_CPP
+#include &quot;binarytree.h&quot;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+
+using namespace std;
+
+
+template &lt;typename T&gt;
+int BinaryTree&lt;T&gt;::countLeafNodes() {
+  return countLeafNodes(root);
+}
+
+template &lt;typename T&gt;
+int BinaryTree&lt;T&gt;::countLeafNodes(Node *&amp; root) {
+  int leaves &#x3D; 0;
+    if(root &#x3D;&#x3D; NULL)
+      return 0;
+    else if(root-&gt;left &#x3D;&#x3D; NULL &amp;&amp; root-&gt;right &#x3D;&#x3D; NULL)
+      leaves &#x3D; 1;
+    else if(root-&gt;left&#x3D;&#x3D;NULL)
+      leaves &#x3D; countLeafNodes(root-&gt;right);
+    else if(root-&gt;right&#x3D;&#x3D;NULL)
+      leaves &#x3D; countLeafNodes(root-&gt;left);
+    else
+      leaves &#x3D; countLeafNodes(root-&gt;left) + countLeafNodes(root-&gt;right);
+
+  return leaves;
+}
+/**
+ * Constructor to create an empty tree.
+ */
+template &lt;typename T&gt;
+BinaryTree&lt;T&gt;::BinaryTree() : root(NULL) {
+  /* nothing */
+}
+
+/**
+ * Inserts into the BinaryTree, taking a pseudo-random path to a leaf where
+ * it is inserted.
+ * @param elem The element to insert
+ */
+template &lt;typename T&gt;
+void BinaryTree&lt;T&gt;::insert(const T&amp; elem) {
+  insert(root, elem);
+}
+
+template &lt;typename T&gt;
+void BinaryTree&lt;T&gt;::insert(Node*&amp; node, const T&amp; elem)
+{
+    // If we&#x27;re at a NULL pointer, we can put our element here
+    if (node &#x3D;&#x3D; NULL)
+        node &#x3D; new Node(elem);
+
+    // Go left or right based on pseudorandom even/odd
+    else if (rand() % 2 &#x3D;&#x3D; 0)
+        insert(node-&gt;left, elem);
+    else
+        insert(node-&gt;right, elem);
+}
+</pre>
+    </div>
+    <div>
+      binarytree.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _BINARYTREE_H
+#define _BINARYTREE_H
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+template &lt;typename T&gt;
+class BinaryTree {
+  private:
+    struct Node {
+        T elem;
+        Node* left;
+        Node* right;
+        Node(const T&amp; element) : elem(element), left(NULL), right(NULL) { }
+    };
+
+    Node* root;
+    void insert(Node*&amp; node, const T&amp; elem);
+    int countLeafNodes(Node*&amp; root);
+
+  public:
+    BinaryTree();
+    int countLeafNodes();
+    void insert(const T&amp; elem);
+};
+
+#ifndef _BINARYTREE_CPP
+#include &quot;binarytree.cpp&quot;
+#endif
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>Binary tree w/ three nodes</td>
+        <td style="text-align: right;">10</td>
+        <td>/</td>
+        <td style="text-align: right;">10</td>
+      </tr>
+      <tr>
+        <td>Binary tree w/ four nodes</td>
+        <td style="text-align: right;">10</td>
+        <td>/</td>
+        <td style="text-align: right;">10</td>
+      </tr>
+      <tr>
+        <td>Binary tree w/ five nodes</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Binary tree w/ seven nodes</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Binary tree w/ nine nodes</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr>
+        <td>Binary tree w/ eleven nodes</td>
+        <td style="text-align: right;">20</td>
+        <td>/</td>
+        <td style="text-align: right;">20</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">100</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ main.cpp binarytree.cpp -std&#x3D;c++1y -g -O0 -Wall -Wextra -pedantic -o binarytree-test
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (1 assertion in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (6 assertions in 6 test cases)
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+  <h4>&quot;Game Night Leaders&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="thesetup">The Setup</h4>
+<p>Consider a game night for students.  When a student arrives to the game night,
+at random they may be designated as a leader.  For example:</p>
+<ul>
+<li>Alice arrives, not a leader</li>
+<li>Bob arrives, leader</li>
+<li>Carol arrives, leader</li>
+<li>Don arrives, not a leader</li>
+<li>Erin arrives, not a leader</li>
+</ul>
+<h4 id="theproblem">The Problem</h4>
+<p>In the <code>GameNight</code> class in <code>gamenight.cpp</code>, complete the following member
+functions:</p>
+<ul>
+<li><p><code>void arrival(Person *p)</code>, adds a <code>Person</code> to the game night</p></li>
+<li><p><code>Person *getLeader()</code>, removes and returns a <code>Person</code>, who is a leader, from
+the game night or <code>NULL</code> if no such person exists</p></li>
+<li><p><code>Person *getNonLeader()</code>, removes and returns a <code>Person</code>, who is <strong>not</strong> a leader,
+from the game night or <code>NULL</code> if no such person exists</p></li>
+</ul>
+<p>When removing and returning a <code>Person</code>, the person being returned <strong>must</strong> be
+the person who arrived <strong>most recent</strong>.</p>
+<h4 id="example">Example</h4>
+<p>Continuing the example started in "The Setup", the member functions will be
+called with pointers to <code>Person</code> classes in the order that the students arrive:</p>
+<ul>
+<li><code>arrival( alice )   // alice, non-leader arrived</code></li>
+<li><code>arrival( bob )     // bob, leader arrived</code></li>
+<li><code>arrival( carol )   // carol, leader arrived</code></li>
+<li><code>arrival( don )     // don, non-leader arrived</code></li>
+<li><code>arrival( erin )    // erin, non-leader arrived</code></li>
+</ul>
+<p>After all students arrived, various calls may be made to <code>getLeader()</code> and
+<code>getNonLeader()</code>.  For example:</p>
+<ul>
+<li><code>getLeader()     // returns a pointer to Carol, this most recent arriving leader</code></li>
+<li><code>getLeader()     // returns a pointer to Bob, the next most recent arriving leader</code></li>
+<li><code>getNonLeader()  // returns a pointer to Erin, the most recent arriving non-leader</code></li>
+<li><code>getLeader()     // returns NULL, as no more leaders exist</code></li>
+<li><code>getNonLeader()  // returns a pointer to Don, the next most recent arriving non-leader</code></li>
+</ul>
+<h4 id="reference">Reference</h4>
+<p>The <code>Person</code> class contains a member function <code>isLeader()</code> that returns <code>true</code>
+if the person is a leader and <code>false</code> otherwise.</p>
+<p>In writing your functions, you may want to make use to <code>queue</code> or <code>stack</code> from
+the standard template library (stl).  You can find the documentation to these
+stl classes here:</p>
+<ul>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/stack.html">stl::stack documentation</a></li>
+<li><a href="https://prairielearn.engr.illinois.edu/pl/course_instance/470/clientFilesCourse/cpp-reference/en/cpp/container/queue.html">stl::queue documentation</a></li>
+</ul>
+<h4 id="compileandtest">Compile and Test</h4>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./gamenight-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      gamenight.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+
+#include &quot;gamenight.h&quot;
+#include &quot;person.h&quot;
+
+using namespace std;
+
+
+void GameNight::arrival(Person *p) {
+
+}
+
+Person * GameNight::getLeader() {
+  return NULL;
+}
+
+Person * GameNight::getNonLeader() {
+  return NULL;
+}
+</pre>
+    </div>
+    <div>
+      gamenight.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _GAMENIGHT_H
+#define _GAMENIGHT_H
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+
+#include &quot;person.h&quot;
+
+using namespace std;
+
+class GameNight {
+  private:
+
+
+  public:
+
+    void arrival(Person *p);
+    Person *getLeader();
+    Person *getNonLeader();
+};
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>Given Test Case (by ref)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">30</td>
+      </tr>
+      <tr>
+        <td>Given Test Case (by value)</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">70</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ main.cpp person.cpp gamenight.cpp -std&#x3D;c++1y -g -O0 -Wall -Wextra -pedantic -o gamenight-test
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by ref)
+-------------------------------------------------------------------------------
+main.cpp:58
+...............................................................................
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x00000000014a26b0
+with message:
+  First leader: Must be Carol, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x00000000014a1aa0
+with message:
+  Second leader: Must be Bob, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x00000000014a3e90
+with message:
+  First non-leader: Must be Erin, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x00000000014a3e40
+with message:
+  Second non-leader: Must be Don, but you function returned NULL
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 5 | 1 passed | 4 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by value)
+-------------------------------------------------------------------------------
+main.cpp:90
+...............................................................................
+
+main.cpp:90: FAILED:
+due to a fatal error condition:
+  First leader: Must be Carol, but you function returned NULL
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gamenight-test is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Given Test Case (by ref)
+-------------------------------------------------------------------------------
+main.cpp:58
+...............................................................................
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000103cd30
+with message:
+  First leader: Must be Carol, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000103aaa0
+with message:
+  Second leader: Must be Bob, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000103cdd0
+with message:
+  First non-leader: Must be Erin, but you function returned NULL
+
+main.cpp:32: FAILED:
+  CHECK( p &#x3D;&#x3D; expected )
+with expansion:
+  NULL &#x3D;&#x3D; 0x000000000103cd80
+with message:
+  Second non-leader: Must be Don, but you function returned NULL
+
+-------------------------------------------------------------------------------
+Given Test Case (by value)
+-------------------------------------------------------------------------------
+main.cpp:90
+...............................................................................
+
+main.cpp:90: FAILED:
+due to a fatal error condition:
+  First leader: Must be Carol, but you function returned NULL
+  SIGSEGV - Segmentation violation signal
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 2 | 2 failed
+assertions: 6 | 1 passed | 5 failed
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>gamenight.cpp:12:6: warning: unused parameter ‘p’ [-Wunused-parameter]
+ void GameNight::arrival(Person *p) {
+      ^
+</pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>
