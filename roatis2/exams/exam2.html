@@ -1,0 +1,372 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>roatis2's feedback report for exam2</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Garden Constructor</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Subtracting Schedules</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">200</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Garden Constructor&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h7 id="thesetup">The Setup</h7>
+<p>Consider a <code>garden</code> class that helps manage a garden of flowers (each flower
+is an instance of a <code>flower</code> class).  The <code>garden</code> class stores the flowers
+in a 4x4 grid (private variable <code>flower ** grid</code>).</p>
+<h7 id="theproblem">The Problem</h7>
+<p>In the class <code>garden</code>, create a constructor which takes one parameter,
+an array of flowers (<code>flower *</code>).  This constructor must:</p>
+<ul>
+<li>Allocate memory on the heap for <code>grid</code> to store the flower in a 4x4 grid.</li>
+<li>Store each <code>flower</code> in one position of the <code>grid</code> (there is no requirement on
+the position of each flower on the 4x4 grid, except that each flower must be
+in exactly one spot).</li>
+</ul>
+<p>You should assume that the input array will always contain exactly 16 flowers
+(one for each position).  You need only to write the constructor (you do not
+need to write all of the "big three").</p>
+<p>Your code must compile and work <em>without</em> modifying
+any of the other helper functions defined in the class (however, feel free
+to call them in your code!).</p>
+<h7 id="compileandtest">Compile and Test</h7>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./garden-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      garden.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;flower.h&quot;
+#include &quot;garden.h&quot;
+
+
+
+
+flower garden::getFlower(int row, int column) const {
+  return this-&gt;grid[row][column];
+}
+
+void garden::setFlower(int row, int column, const flower &amp;f) {
+  this-&gt;grid[row][column] &#x3D; f;
+}
+</pre>
+    </div>
+    <div>
+      garden.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _GARDEN_H
+#define _GARDEN_H
+
+#include &quot;flower.h&quot;
+
+class garden {
+public:
+  garden(flower *)
+  flower getFlower(int row, int column) const;
+  void setFlower(int row, int column, const flower &amp;f);
+
+private:
+  flower **grid;
+};
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ flower.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ garden.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>In file included from garden.cpp:2:0:
+garden.h:8:18: error: expected ‘;’ at end of member declaration
+   garden(flower *)
+                  ^
+make: *** [garden.o] Error 1
+</pre>
+  </div>
+  <hr>
+  <h4>&quot;Subtracting Schedules&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h7 id="thesetup">The Setup</h7>
+<p>Consider a <code>schedule</code> class that stores a set of courses that make up your
+schedule.  The <code>schedule</code> class has two private variables:</p>
+<ul>
+<li><code>int count</code>, the current number of courses in the schedule.  This variable
+is the length of the array <code>courses</code>.</li>
+<li><code>string *courses</code>, an array of course names.</li>
+</ul>
+<h7 id="theproblem">The Problem</h7>
+<p>In the <code>schedule</code> class, overload the <code>-</code> (minus) operator to the courses
+contained in one schedule from the other.</p>
+<p>The result must be a <code>schedule</code> that contains only the courses found in the
+first <code>schedule</code> that are not found on the second <code>schedule</code>.</p>
+<p>Your code must compile and work <em>without</em> modifying any of the other helper
+functions defined in the class (however, feel free to call them in your code!).</p>
+<h7 id="compileandtest">Compile and Test</h7>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./schedule-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      schedule.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;schedule.h&quot;
+
+#include &lt;iostream&gt;
+using namespace std;
+
+//
+// In the &#x60;schedule&#x60; class, overload the &#x60;-&#x60; (minus) operator to the courses
+// contained in one schedule from the other.
+//
+// The result must be a &#x60;schedule&#x60; that contains only the courses found in the
+// first &#x60;schedule&#x60; that are not found on the second &#x60;schedule&#x60;.
+//
+
+schedule::schedule() {
+  count &#x3D; 0;
+  courses &#x3D; NULL;
+}
+
+void schedule::addCourse(const string course) {
+  string *new_courses &#x3D; new string[this-&gt;count + 1];
+  for (int i &#x3D; 0; i &lt; this-&gt;count; i++) {
+    new_courses[i] &#x3D; courses[i];
+  }
+  new_courses[count] &#x3D; course;
+  count++;
+
+  if (courses) { delete[] courses; }
+  courses &#x3D; new_courses;
+}
+
+int schedule::getCourseCount() const {
+  return count;
+}
+
+const string schedule::getCourse(const int index) const {
+  if (index &lt; 0 || index &gt;&#x3D; count) { return NULL; }
+  else                             { return courses[index]; }
+}
+  /* code */
+const schedule &amp; schedule::operator-(const schedule &amp; source){
+  if (this !&#x3D; &amp;source){
+      clear();
+      copy(source);
+    }
+  return *this;
+  }
+
+schedule :: ~schedule(){
+  clear();
+}
+
+void schedule::clear(){
+  if(this !&#x3D; NULL){
+    for(int i &#x3D;0, i&lt;count,i++)
+      delete schedule[i];
+      schedule[i] &#x3D; NULL;
+  }
+      delete schedule[];
+      schedule &#x3D; NULL;
+}
+
+void schedule::copy(const schedule &amp; source){
+
+}
+</pre>
+    </div>
+    <div>
+      schedule.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _SCHEDULE_H
+#define _SCHEDULE_H
+
+#include &lt;string&gt;
+using namespace std;
+
+//
+// In the &#x60;schedule&#x60; class, overload the &#x60;-&#x60; (minus) operator to the courses
+// contained in one schedule from the other.
+//
+// The result must be a &#x60;schedule&#x60; that contains only the courses found in the
+// first &#x60;schedule&#x60; that are not found on the second &#x60;schedule&#x60;.
+//
+
+class schedule {
+public:
+  schedule();
+  void addCourse(const string course);
+  int getCourseCount() const;
+  const string getCourse(const int index) const;
+  ~schedule();
+  schedule (const schedule &amp; source);
+  void clear();
+  void copy(const schedule &amp; source);
+
+private:
+  int count;
+  string *courses;
+};
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic   -c -o schedule.o schedule.cpp
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>schedule.cpp:40:61: error: no ‘const schedule&amp; schedule::operator-(const schedule&amp;)’ member function declared in class ‘schedule’
+ const schedule &amp; schedule::operator-(const schedule &amp; source){
+                                                             ^
+schedule.cpp: In member function ‘void schedule::clear()’:
+schedule.cpp:54:20: error: expected initializer before ‘&lt;’ token
+     for(int i &#x3D;0, i&lt;count,i++)
+                    ^
+schedule.cpp:54:20: error: expected ‘;’ before ‘&lt;’ token
+schedule.cpp:54:20: error: expected primary-expression before ‘&lt;’ token
+schedule.cpp:54:30: error: expected ‘;’ before ‘)’ token
+     for(int i &#x3D;0, i&lt;count,i++)
+                              ^
+schedule.cpp:55:22: error: expected primary-expression before ‘[’ token
+       delete schedule[i];
+                      ^
+schedule.cpp:56:15: error: expected unqualified-id before ‘[’ token
+       schedule[i] &#x3D; NULL;
+               ^
+schedule.cpp:58:22: error: expected primary-expression before ‘[’ token
+       delete schedule[];
+                      ^
+schedule.cpp:58:23: error: expected primary-expression before ‘]’ token
+       delete schedule[];
+                       ^
+schedule.cpp:59:16: error: expected unqualified-id before ‘&#x3D;’ token
+       schedule &#x3D; NULL;
+                ^
+schedule.cpp: At global scope:
+schedule.cpp:62:6: warning: unused parameter ‘source’ [-Wunused-parameter]
+ void schedule::copy(const schedule &amp; source){
+      ^
+make: *** [schedule.o] Error 1
+</pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>
