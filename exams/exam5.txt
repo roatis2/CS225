@@ -10,6 +10,7 @@ Exam #5 score (roatis2): 100/200
 
 --- stdout ---
 g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c rgbapixel.cpp -o rgbapixel.o
+node quadtree_inject.js
 g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c quadtree.cpp -o quadtree.o
 g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c png.cpp -o png.o
 g++ -std=c++0x -g -O0 -Wall -Wextra -lpng -Wno-unused-parameter -Wno-unused-variable -c quadtree_given.cpp -o quadtree_given.o
