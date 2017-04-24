@@ -1,8 +1,8 @@
-Grading r48681 by enx-cs225autograder committed on Sat Apr 22 00:41:38 CDT 2017
+Grading r48942 by enx-cs225autograder committed on Sun Apr 23 01:38:59 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-23 01:10:57
+Testing mp7 at 2017-04-24 01:30:04
 
-"Doing more things faster is no substitute for doing the right things." ~ Stephen R. Covey
+"I don't try to be a threat to Microsoft, mainly because I don't really see them as competition. Especially not Windows -- the goals of Linux and Windows are simply so different." ~ Linus Torvalds
 
 Setting up test environment...
 Compiling...
