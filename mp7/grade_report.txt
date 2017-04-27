@@ -1,8 +1,8 @@
-Grading r49712 by enx-cs225autograder committed on Tue Apr 25 01:47:30 CDT 2017
+Grading r49774 by enx-cs225autograder committed on Wed Apr 26 01:50:43 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-26 01:18:01
+Testing mp7 at 2017-04-27 01:13:04
 
-"Doing more things faster is no substitute for doing the right things." ~ Stephen R. Covey
+"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
 
 Setting up test environment...
 Compiling...
