@@ -1,8 +1,8 @@
-Grading r49774 by enx-cs225autograder committed on Wed Apr 26 01:50:43 CDT 2017
+Grading r50011 by enx-cs225autograder committed on Thu Apr 27 01:42:11 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-27 01:13:04
+Testing mp7 at 2017-04-28 01:16:39
 
-"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
+"The most exciting phrase to hear in science - the one that heralds new discoveries - is not 'Eureka!' but 'That's funny....'" ~ Isaac Asimov
 
 Setting up test environment...
 Compiling...
