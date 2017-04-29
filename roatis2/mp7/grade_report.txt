@@ -1,8 +1,8 @@
-Grading r50011 by enx-cs225autograder committed on Thu Apr 27 01:42:11 CDT 2017
+Grading r50194 by enx-cs225autograder committed on Fri Apr 28 01:45:46 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-28 01:16:39
+Testing mp7 at 2017-04-29 01:13:13
 
-"The most exciting phrase to hear in science - the one that heralds new discoveries - is not 'Eureka!' but 'That's funny....'" ~ Isaac Asimov
+"All that is gold does not glitter, / Not all those who wander are lost;" ~ Bilbo Baggins
 
 Setting up test environment...
 Compiling...
