@@ -127,9 +127,10 @@ int GraphTools::findShortestPath(Graph& graph, Vertex start, Vertex end)
       {
         if(graph.getVertexLabel(adjacent[i]) == "UNEXPLORED") //if the vertex is unexplored...
         {
+          q.push(adjacent[i]); //push the adjacent onto our queue so we can explore those edges
           pair <Vertex, Vertex> pairVertex(adjacent[i], s); //pair the current vertex and the adjacent one
           p.insert(pairVertex); //insert that pairing into our map
-          q.push(adjacent[i]); //push the adjacent onto our queue so we can explore those edges
+
           graph.setEdgeLabel(s, adjacent[i],"DISCOVERY"); //set the vertex edge to discovery
           graph.setVertexLabel(adjacent[i], "VISITED"); //sert vertex to visited, since we are there already
 
@@ -189,15 +190,13 @@ edges have been added, where n is the number of vertices in the graph.
 
     for(size_t i = 0; i < e.size(); i++) //going through all our edges in our vector
     {
-      Vertex s = e[i].source; //label our source and destination vectors
-      Vertex d = e[i].dest;
-      if(setVertices.find(s) == setVertices.find(d)) { //if they are in same set
+
+      if(setVertices.find(e[i].source) == setVertices.find(e[i].dest)) { //if they are in same set
         //do ntohinbg
-      }
-      else{
+      }else{
         //setVertices.find(s,d);
-        setVertices.UBS(s,d);
-        graph.setEdgeLabel(s, d, "MST");
+        setVertices.UBS(e[i].source,e[i].dest);
+        graph.setEdgeLabel(e[i].source, e[i].dest, "MST");
       }
     }
 }
