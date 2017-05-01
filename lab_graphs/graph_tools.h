@@ -42,7 +42,11 @@ namespace GraphTools
     void findMST(Graph& graph);
 
     // define any helper functions here:
-
+    bool sort_edge(Edge s, Edge d);
+    void markUnexplored(Graph& graph);
+    //int findDist(Graph & graph, Vertex end, Vertex start, Vertex newEnd, int dist);
+    bool isEmpty(queue <Vertex> q);
+    vector<Vertex> newVVec(Graph & graph);
 }
 
 #endif
